@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import ProductCard from "./ProductCard";
+import { getSavedIds, setSavedIds, reportSaveDelta } from "@/lib/save";
 import type { Perfume } from "@/data/perfumes";
 
 type PerfumePick = Perfume & { reason: string };
@@ -21,28 +22,53 @@ interface ResultViewProps {
   onReset: () => void;
 }
 
-const GRADIENT = "linear-gradient(90deg, #FF8FB1, #A586FF, #5AA9FF)";
-
 export default function ResultView({ data, previews, onReset }: ResultViewProps) {
   const [saved, setSaved] = useState<Set<string>>(new Set());
+  const [shared, setShared] = useState(false);
 
   useEffect(() => {
-    try {
-      const stored = JSON.parse(localStorage.getItem("sillage-saved") ?? "[]");
-      setSaved(new Set(stored));
-    } catch {}
+    setSaved(new Set(getSavedIds()));
   }, []);
 
   const toggleSave = (id: string) => {
     setSaved((prev) => {
       const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      try {
-        localStorage.setItem("sillage-saved", JSON.stringify(Array.from(next)));
-      } catch {}
+      if (next.has(id)) {
+        next.delete(id);
+        reportSaveDelta(id, -1);
+      } else {
+        next.add(id);
+        reportSaveDelta(id, 1);
+      }
+      setSavedIds(Array.from(next));
       return next;
     });
+  };
+
+  const share = async () => {
+    const lines = [
+      `킁킁이 읽은 내 무드: "${data.moodOneLiner}"`,
+      `키워드: ${data.moodKeywords.map((k) => `#${k}`).join(" ")}`,
+      "",
+      "추천받은 향수:",
+      ...data.picks.map((p) => `· ${p.brand} — ${p.name} (${p.priceText})`),
+      "",
+      "킁킁 — 당신의 향을 찾아드립니다",
+    ];
+    const text = lines.join("\n");
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: "킁킁 — 내 향수 추천 결과", text });
+        return;
+      }
+    } catch {
+      return; // 사용자가 공유를 취소한 경우
+    }
+    try {
+      await navigator.clipboard.writeText(text);
+      setShared(true);
+      setTimeout(() => setShared(false), 2000);
+    } catch {}
   };
 
   const byTier = {
@@ -52,7 +78,7 @@ export default function ResultView({ data, previews, onReset }: ResultViewProps)
   };
 
   return (
-    <section className="flex flex-col gap-8 animate-[fadeUp_0.5s_ease_both]">
+    <section className="flex flex-col gap-7 animate-[fadeUp_0.5s_ease_both]">
 
       {/* 업로드 이미지 콜라주 */}
       {previews.length > 0 && (
@@ -84,81 +110,85 @@ export default function ResultView({ data, previews, onReset }: ResultViewProps)
               })}
             </div>
           )}
-          {/* 오버레이 그라데이션 */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
         </div>
       )}
 
       {/* SCENT READING */}
-      <div className="text-center px-2 pb-6 border-b border-[#ECEDF1]">
-        <p
-          className="text-[10px] tracking-[0.3em] font-medium mb-4"
-          style={{ background: GRADIENT, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
-        >
+      <div className="text-center px-2 py-7 bg-[#111111] rounded-[22px] text-white">
+        <p className="text-[10px] tracking-[0.3em] font-medium mb-4 text-[#999999]">
           SCENT READING
         </p>
-        <p className="font-serif text-2xl leading-snug text-[#17171C] italic mb-4">
+        <p className="text-[22px] font-bold leading-snug mb-5 px-4">
           {data.moodOneLiner}
         </p>
-        <div className="flex flex-wrap gap-2 justify-center">
+        <div className="flex flex-wrap gap-2 justify-center px-4">
           {data.moodKeywords.map((kw, i) => (
-            <span key={i} className="text-xs px-3 py-1 rounded-full border text-[#6B6E7B] border-[#ECEDF1]">
-              {kw}
+            <span
+              key={i}
+              className="text-xs px-3 py-1.5 rounded-full border border-[#444444] text-[#CCCCCC] animate-[fadeUp_0.4s_ease_both]"
+              style={{ animationDelay: `${0.15 + i * 0.07}s` }}
+            >
+              #{kw}
             </span>
           ))}
         </div>
       </div>
 
       {/* 나랑 잘 맞는 향 */}
-      <div>
-        <SectionTitle>나랑 잘 맞는 향</SectionTitle>
-        <p className="text-[15px] text-[#17171C] leading-relaxed">{data.matchDescription}</p>
-      </div>
+      <SectionCard num="01" title="나랑 잘 맞는 향" icon={<NoseIcon />}>
+        <p className="text-[15px] text-[#111111] leading-relaxed">{data.matchDescription}</p>
+      </SectionCard>
 
       {/* 향조 */}
       {data.families.length > 0 && (
-        <div>
-          <SectionTitle>이 무드의 향조</SectionTitle>
-          <div className="flex flex-col gap-3">
+        <SectionCard num="02" title="이 무드의 향조" icon={<LeafIcon />}>
+          <div className="flex flex-col gap-4">
             {data.families.map((f, i) => (
               <div key={i} className="flex items-start gap-3">
-                <span
-                  className="mt-1 text-xs font-semibold px-2.5 py-0.5 rounded-full text-white flex-shrink-0"
-                  style={{ background: GRADIENT }}
-                >
+                <span className="mt-0.5 text-xs font-semibold px-3 py-1 rounded-full bg-[#111111] text-white flex-shrink-0">
                   {f.name}
                 </span>
-                <p className="text-sm text-[#6B6E7B] leading-relaxed">{f.desc}</p>
+                <p className="text-sm text-[#555555] leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
-        </div>
+        </SectionCard>
       )}
 
       {/* 가격대별 추천 */}
-      <div>
-        <SectionTitle>가격대별 추천</SectionTitle>
-        <div className="flex flex-col gap-6">
+      <SectionCard num="03" title="가격대별 추천" icon={<TagIcon />}>
+        <div className="flex flex-col gap-7">
           {byTier.entry.length > 0 && (
-            <TierGroup label="엔트리" picks={byTier.entry} saved={saved} onToggle={toggleSave} />
+            <TierGroup label="엔트리" sub="부담 없이 시작" picks={byTier.entry} saved={saved} onToggle={toggleSave} />
           )}
           {byTier.mid.length > 0 && (
-            <TierGroup label="미들" picks={byTier.mid} saved={saved} onToggle={toggleSave} />
+            <TierGroup label="미들" sub="데일리 투자" picks={byTier.mid} saved={saved} onToggle={toggleSave} />
           )}
           {byTier.luxury.length > 0 && (
-            <TierGroup label="럭셔리" picks={byTier.luxury} saved={saved} onToggle={toggleSave} />
+            <TierGroup label="럭셔리" sub="나를 위한 선물" picks={byTier.luxury} saved={saved} onToggle={toggleSave} />
           )}
         </div>
+      </SectionCard>
+
+      {/* 공유 + 다시 찾기 */}
+      <div className="flex flex-col gap-3">
+        <button
+          onClick={share}
+          className="w-full py-3.5 rounded-2xl bg-[#111111] text-white text-sm font-semibold transition-all hover:bg-[#333333] active:scale-[0.98] flex items-center justify-center gap-2"
+        >
+          <ShareIcon />
+          {shared ? "복사됐어요! 친구에게 붙여넣기 해보세요" : "결과 공유하기"}
+        </button>
+        <button
+          onClick={onReset}
+          className="w-full py-3.5 rounded-2xl border border-[#E5E5E5] bg-white text-[#555555] text-sm transition-all hover:border-[#111111] hover:text-[#111111] active:scale-[0.98]"
+        >
+          다른 이미지로 다시 찾기
+        </button>
       </div>
 
-      <button
-        onClick={onReset}
-        className="w-full py-3 rounded-2xl border border-[#ECEDF1] text-[#6B6E7B] text-sm hover:border-[#2D6CFF] hover:text-[#2D6CFF] transition-colors"
-      >
-        다른 이미지로 다시 찾기
-      </button>
-
-      <p className="text-[11px] text-[#9A9CA8] text-center leading-relaxed pb-2">
+      <p className="text-[11px] text-[#999999] text-center leading-relaxed pb-2 px-4">
         AI가 이미지를 해석해 큐레이션 목록에서 고른 추천이며, 실제 향은 다르게 느껴질 수 있어요.
       </p>
       {/* TODO: 제휴(어필리에이트) 링크로 전환 시 아래 문구를 반드시 노출해야 합니다.
@@ -168,30 +198,81 @@ export default function ResultView({ data, previews, onReset }: ResultViewProps)
   );
 }
 
-function SectionTitle({ children }: { children: React.ReactNode }) {
+function SectionCard({ num, title, icon, children }: {
+  num: string; title: string; icon: ReactNode; children: ReactNode;
+}) {
   return (
-    <h2 className="text-[13px] font-semibold text-[#17171C] tracking-wide mb-3 uppercase">
+    <div className="bg-white rounded-[22px] border border-[#E5E5E5] p-6">
+      <div className="flex items-center gap-2.5 mb-5 pb-4 border-b border-[#F0F0F0]">
+        <span className="w-8 h-8 rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#111111]">
+          {icon}
+        </span>
+        <span className="text-[10px] tracking-[0.2em] text-[#999999] font-medium">{num}</span>
+        <h2 className="text-[15px] font-bold text-[#111111]">{title}</h2>
+      </div>
       {children}
-    </h2>
+    </div>
   );
 }
 
 function TierGroup({
-  label, picks, saved, onToggle,
+  label, sub, picks, saved, onToggle,
 }: {
   label: string;
+  sub: string;
   picks: PerfumePick[];
   saved: Set<string>;
   onToggle: (id: string) => void;
 }) {
   return (
     <div>
-      <p className="text-xs text-[#9A9CA8] mb-2 font-medium">{label}</p>
-      <div className="flex flex-col gap-3">
+      <div className="flex items-baseline gap-2 mb-3">
+        <p className="text-sm font-bold text-[#111111]">{label}</p>
+        <p className="text-[11px] text-[#999999]">{sub}</p>
+      </div>
+      <div className="flex flex-col gap-4">
         {picks.map((p) => (
           <ProductCard key={p.id} perfume={p} saved={saved.has(p.id)} onToggleSave={onToggle} />
         ))}
       </div>
     </div>
+  );
+}
+
+function NoseIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3v8c0 3-3 4-3 7a3 3 0 0 0 6 0c0-3-3-4-3-7" />
+      <path d="M17 8c1.5 1 2.5 2.5 2.5 4M4.5 12C4.5 9.5 5.5 8 7 7" />
+    </svg>
+  );
+}
+
+function LeafIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 19c0-8 5-14 14-14 0 9-6 14-14 14z" />
+      <path d="M5 19c3-5 7-8 10-9" />
+    </svg>
+  );
+}
+
+function TagIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 3h8l10 10-8 8L3 11V3z" />
+      <circle cx="8" cy="8" r="1.5" />
+    </svg>
+  );
+}
+
+function ShareIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="6" cy="12" r="3" />
+      <circle cx="18" cy="6" r="3" />
+      <circle cx="18" cy="18" r="3" />
+      <path d="M8.7 10.7l6.6-3.4M8.7 13.3l6.6 3.4" />
+    </svg>
   );
 }

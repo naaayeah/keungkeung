@@ -4,16 +4,18 @@
 
 @layer base {
   html {
-    background-color: #F4F5F7;
-    color: #17171C;
+    background-color: #fafafa;
+    color: #111111;
   }
 
-  .font-serif {
-    font-family: 'Nanum Myeongjo', Georgia, serif;
+  body {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+      system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
+      "Noto Sans KR", "Malgun Gothic", sans-serif;
   }
 
   :focus-visible {
-    outline: 2px solid #2D6CFF;
+    outline: 2px solid #111111;
     outline-offset: 2px;
   }
 }
@@ -28,10 +30,33 @@
   50%      { transform: translateY(-8px); }
 }
 
-@keyframes shimmer {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(-8deg); }
+  75%      { transform: rotate(8deg); }
+}
+
+@keyframes sniff {
+  0%, 100% { transform: translateY(0) scale(1); }
+  30%      { transform: translateY(-3px) scale(1.05); }
+  60%      { transform: translateY(1px) scale(0.98); }
+}
+
+@keyframes scentWave {
+  0%   { opacity: 0; transform: translateY(6px) scaleX(0.7); }
+  40%  { opacity: 0.7; }
+  100% { opacity: 0; transform: translateY(-14px) scaleX(1.15); }
+}
+
+@keyframes progressSlide {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
 }
 
 @media (prefers-reduced-motion: reduce) {

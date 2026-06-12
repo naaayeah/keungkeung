@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import ProductImage from "./ProductImage";
 import type { Perfume } from "@/data/perfumes";
 
@@ -11,73 +12,77 @@ interface ProductCardProps {
 
 export default function ProductCard({ perfume, onToggleSave, saved }: ProductCardProps) {
   const firstChannel = perfume.channels?.[0];
+  const [popping, setPopping] = useState(false);
+
+  const handleSave = () => {
+    onToggleSave(perfume.id);
+    setPopping(true);
+    setTimeout(() => setPopping(false), 400);
+  };
 
   return (
-    <article className="bg-white rounded-[20px] shadow-sm border border-[#ECEDF1] overflow-hidden">
+    <article className="bg-white rounded-[20px] border border-[#E5E5E5] overflow-hidden transition-shadow duration-300 hover:shadow-lg">
       {/* 상단: 이미지 + 기본 정보 */}
       <div className="flex">
         {/* 썸네일 — 크기 고정으로 이미지 깨져도 레이아웃 유지 */}
         <div
-          className="flex-shrink-0 bg-[#F8F8FA] flex items-center justify-center p-3"
-          style={{ width: 88, minHeight: 88 }}
+          className="flex-shrink-0 bg-[#F5F5F5] flex items-center justify-center p-3"
+          style={{ width: 96, minHeight: 96 }}
         >
-          <ProductImage imageUrl={perfume.imageUrl} family={perfume.family} size={62} />
+          <ProductImage imageUrl={perfume.imageUrl} family={perfume.family} size={66} />
         </div>
 
         {/* 정보 */}
-        <div className="flex-1 p-4 flex flex-col gap-1 min-w-0">
+        <div className="flex-1 p-5 flex flex-col gap-2 min-w-0">
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
-              <p className="text-[10px] text-[#9A9CA8] tracking-widest uppercase">{perfume.brand}</p>
-              <h3 className="text-[16px] font-semibold text-[#17171C] leading-tight">{perfume.name}</h3>
+              <p className="text-[10px] text-[#999999] tracking-widest uppercase mb-1">{perfume.brand}</p>
+              <h3 className="text-[16px] font-semibold text-[#111111] leading-snug">{perfume.name}</h3>
             </div>
             <button
-              onClick={() => onToggleSave(perfume.id)}
+              onClick={handleSave}
               aria-label={saved ? "찜 취소" : "찜하기"}
               aria-pressed={saved}
-              className="flex-shrink-0 text-xl transition-transform active:scale-90 mt-0.5 focus-visible:outline-2 focus-visible:outline-[#2D6CFF] rounded-full"
+              className="flex-shrink-0 mt-0.5 focus-visible:outline-2 focus-visible:outline-[#111111] rounded-full"
+              style={popping ? { animation: "pop 0.4s ease" } : undefined}
             >
-              {saved ? (
-                <span style={{ color: "#B98E33" }}>♥</span>
-              ) : (
-                <span className="text-[#ECEDF1]">♡</span>
-              )}
+              <HeartIcon filled={saved} />
             </button>
           </div>
           <div className="flex flex-wrap gap-1.5 items-center">
-            <span className="text-[11px] px-2 py-0.5 rounded-full bg-[#F4F5F7] text-[#6B6E7B]">
+            <span className="text-[11px] px-2.5 py-1 rounded-full bg-[#F0F0F0] text-[#555555]">
               {perfume.family}
             </span>
-            <span className="text-[11px] text-[#9A9CA8]">{perfume.priceText}</span>
+            <span className="text-[11px] text-[#999999]">{perfume.priceText}</span>
           </div>
           <div className="flex flex-wrap gap-1.5 items-center">
-            <span className="text-[11px] px-2 py-0.5 rounded-full bg-[#EEF3FF] text-[#2D6CFF] font-medium">
+            <span className="text-[11px] px-2.5 py-1 rounded-full bg-[#111111] text-white font-medium">
               {perfume.target.gender}
             </span>
-            <span className="text-[11px] text-[#6B6E7B]">{perfume.target.age} 추천</span>
+            <span className="text-[11px] text-[#555555]">{perfume.target.age} 추천</span>
           </div>
         </div>
       </div>
 
-      <div className="px-4 pb-4 flex flex-col gap-3">
+      <div className="px-5 pb-5 flex flex-col gap-4">
         {/* AI 추천 이유 */}
-        <div className="bg-gradient-to-r from-[#FF8FB1]/10 via-[#A586FF]/10 to-[#5AA9FF]/10 rounded-xl px-4 py-3">
-          <p className="text-[10px] text-[#6B6E7B] mb-1 font-medium">이 무드라면</p>
-          <p className="text-sm text-[#17171C] leading-relaxed">{perfume.reason}</p>
+        <div className="bg-[#F7F7F7] rounded-xl px-4 py-3.5 border border-[#EEEEEE]">
+          <p className="text-[10px] text-[#999999] mb-1.5 font-semibold tracking-wide">이 무드라면</p>
+          <p className="text-sm text-[#111111] leading-relaxed">{perfume.reason}</p>
         </div>
 
         {/* 노트 피라미드 */}
-        <div className="border-t border-[#ECEDF1] pt-3 flex flex-col gap-2">
-          <NoteRow label="탑" value={perfume.notes.top} color="#FF8FB1" />
-          <NoteRow label="미들" value={perfume.notes.mid} color="#A586FF" />
-          <NoteRow label="베이스" value={perfume.notes.base} color="#5AA9FF" />
+        <div className="border-t border-[#EEEEEE] pt-4 flex flex-col gap-2.5">
+          <NoteRow label="탑" value={perfume.notes.top} shade="#111111" />
+          <NoteRow label="미들" value={perfume.notes.mid} shade="#666666" />
+          <NoteRow label="베이스" value={perfume.notes.base} shade="#AAAAAA" />
         </div>
 
         {/* 향기 설명 */}
-        <p className="text-sm text-[#17171C] leading-relaxed">{perfume.desc}</p>
+        <p className="text-sm text-[#111111] leading-relaxed">{perfume.desc}</p>
 
         {/* 후기 */}
-        <p className="text-xs text-[#6B6E7B] leading-relaxed border-t border-[#ECEDF1] pt-3">
+        <p className="text-[13px] text-[#666666] leading-relaxed border-t border-[#EEEEEE] pt-4">
           {perfume.review}
         </p>
 
@@ -87,25 +92,38 @@ export default function ProductCard({ perfume, onToggleSave, saved }: ProductCar
             href={firstChannel.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-1 w-full py-2.5 rounded-xl text-center text-sm font-semibold text-white transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-[#2D6CFF]"
-            style={{ background: "#2D6CFF" }}
+            className="mt-1 w-full py-3 rounded-xl text-center text-sm font-semibold text-white bg-[#111111] transition-all hover:bg-[#333333] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-[#111111]"
           >
             {firstChannel.name}에서 보기 →
           </a>
         ) : (
-          <p className="text-center text-xs text-[#9A9CA8] mt-1">온라인 판매처 정보 없음</p>
+          <p className="text-center text-xs text-[#999999] mt-1">온라인 판매처 정보 없음</p>
         )}
       </div>
     </article>
   );
 }
 
-function NoteRow({ label, value, color }: { label: string; value: string; color: string }) {
+function HeartIcon({ filled }: { filled: boolean }) {
   return (
-    <div className="flex items-center gap-2">
-      <span className="w-7 text-xs font-semibold flex-shrink-0" style={{ color }}>{label}</span>
-      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: color }} aria-hidden="true" />
-      <span className="text-[#17171C] font-light text-xs">{value}</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M12 21s-7.5-4.8-9.8-9.2C.6 8.6 2.6 5 6.1 5c2 0 3.4 1.1 4.2 2.3L12 9l1.7-1.7C14.5 6.1 15.9 5 17.9 5c3.5 0 5.5 3.6 3.9 6.8C19.5 16.2 12 21 12 21z"
+        fill={filled ? "#111111" : "none"}
+        stroke={filled ? "#111111" : "#CCCCCC"}
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function NoteRow({ label, value, shade }: { label: string; value: string; shade: string }) {
+  return (
+    <div className="flex items-center gap-2.5">
+      <span className="w-9 text-xs font-semibold flex-shrink-0" style={{ color: shade }}>{label}</span>
+      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: shade }} aria-hidden="true" />
+      <span className="text-[#111111] text-xs">{value}</span>
     </div>
   );
 }
