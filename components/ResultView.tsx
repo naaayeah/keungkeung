@@ -22,6 +22,29 @@ interface ResultViewProps {
   onReset: () => void;
 }
 
+// 결과 무드에 맞는 톤다운 컬러 (향조·키워드에서 추출)
+const MOOD_PALETTE: { keywords: string[]; color: string }[] = [
+  { keywords: ["플로럴", "로즈", "피오니", "핑크", "꽃", "로맨틱", "청순"], color: "#9C7B82" },
+  { keywords: ["그린", "그리너리", "허브", "잎", "자연", "숲", "초록"], color: "#6F7D6A" },
+  { keywords: ["아쿠아", "마린", "바다", "물", "블루", "여름"], color: "#66808F" },
+  { keywords: ["시트러스", "레몬", "햇살", "노랑", "상큼"], color: "#9D8E62" },
+  { keywords: ["우디", "샌달", "나무", "미니멀"], color: "#7A6A58" },
+  { keywords: ["오리엔탈", "스파이시", "구르망", "바닐라", "달콤"], color: "#8A7060" },
+  { keywords: ["머스크", "파우더리", "포근", "몽환"], color: "#8C8794" },
+];
+
+function getMoodColor(data: ResultData): string {
+  const haystack = [
+    ...data.families.map((f) => f.name),
+    ...data.moodKeywords,
+    ...data.picks.map((p) => p.family),
+  ].join(" ");
+  for (const { keywords, color } of MOOD_PALETTE) {
+    if (keywords.some((k) => haystack.includes(k))) return color;
+  }
+  return "#5C5C5C";
+}
+
 export default function ResultView({ data, previews, onReset }: ResultViewProps) {
   const [saved, setSaved] = useState<Set<string>>(new Set());
   const [shared, setShared] = useState(false);
@@ -114,9 +137,12 @@ export default function ResultView({ data, previews, onReset }: ResultViewProps)
         </div>
       )}
 
-      {/* SCENT READING */}
-      <div className="text-center px-2 py-7 bg-[#111111] rounded-[22px] text-white">
-        <p className="text-[10px] tracking-[0.3em] font-medium mb-4 text-[#999999]">
+      {/* SCENT READING — 결과 무드에 맞는 톤다운 컬러 */}
+      <div
+        className="text-center px-2 py-7 rounded-[22px] text-white"
+        style={{ background: getMoodColor(data) }}
+      >
+        <p className="text-[10px] tracking-[0.3em] font-medium mb-4 text-white/60">
           SCENT READING
         </p>
         <p className="text-[22px] font-bold leading-snug mb-5 px-4">
@@ -126,7 +152,7 @@ export default function ResultView({ data, previews, onReset }: ResultViewProps)
           {data.moodKeywords.map((kw, i) => (
             <span
               key={i}
-              className="text-xs px-3 py-1.5 rounded-full border border-[#444444] text-[#CCCCCC] animate-[fadeUp_0.4s_ease_both]"
+              className="text-xs px-3 py-1.5 rounded-full border border-white/30 text-white/90 animate-[fadeUp_0.4s_ease_both]"
               style={{ animationDelay: `${0.15 + i * 0.07}s` }}
             >
               #{kw}

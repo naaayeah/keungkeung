@@ -175,7 +175,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* 드롭존 */}
+            {/* 드롭존 — 이미지를 올리면 숨긴다 */}
+            {images.length === 0 && (
             <label
               htmlFor="image-upload"
               className={`group block w-full rounded-[22px] border-2 border-dashed transition-all duration-300 py-12 px-6 text-center cursor-pointer ${
@@ -199,6 +200,7 @@ export default function Home() {
                 클릭 또는 드래그 · 최대 {MAX_IMAGES}장 · JPG·PNG·WEBP · 각 5MB 이하
               </p>
             </label>
+            )}
 
             <input
               id="image-upload"

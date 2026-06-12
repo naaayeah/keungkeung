@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import ProductImage from "./ProductImage";
 import { getSimilarPerfumes } from "@/data/perfumes";
 import { getSavedIds, setSavedIds, reportSaveDelta } from "@/lib/save";
@@ -10,6 +11,7 @@ interface ProductCardProps {
   perfume: Perfume & { reason?: string };
   onToggleSave: (id: string) => void;
   saved: boolean;
+  showSimilar?: boolean; // 모달 안에서는 false로 — 무한 추천 체인 방지
 }
 
 // review 문자열에서 "따옴표" 부분은 키워드 칩으로, 나머지는 줄글로 분리
@@ -23,12 +25,12 @@ function parseReview(review: string): { keywords: string[]; prose: string } {
   return { keywords, prose };
 }
 
-export default function ProductCard({ perfume, onToggleSave, saved }: ProductCardProps) {
+export default function ProductCard({ perfume, onToggleSave, saved, showSimilar = true }: ProductCardProps) {
   const firstChannel = perfume.channels?.[0];
   const [popping, setPopping] = useState(false);
-  const [showSimilar, setShowSimilar] = useState(false);
+  const [similarOpen, setSimilarOpen] = useState(false);
   const [detail, setDetail] = useState<Perfume | null>(null);
-  const similar = getSimilarPerfumes(perfume.id, 3);
+  const similar = showSimilar ? getSimilarPerfumes(perfume.id, 3) : [];
   const { keywords, prose } = parseReview(perfume.review);
 
   const handleSave = () => {
@@ -146,20 +148,20 @@ export default function ProductCard({ perfume, onToggleSave, saved }: ProductCar
         {similar.length > 0 && (
           <div className="border-t border-[#EEEEEE] pt-3">
             <button
-              onClick={() => setShowSimilar((v) => !v)}
-              aria-expanded={showSimilar}
+              onClick={() => setSimilarOpen((v) => !v)}
+              aria-expanded={similarOpen}
               className="w-full flex items-center justify-between text-[13px] font-semibold text-[#555555] hover:text-[#111111] transition-colors py-1"
             >
               비슷한 향수 보기
               <span
                 className="text-[#999999] transition-transform duration-300"
-                style={{ transform: showSimilar ? "rotate(90deg)" : "none" }}
+                style={{ transform: similarOpen ? "rotate(90deg)" : "none" }}
                 aria-hidden="true"
               >
                 더보기 ›
               </span>
             </button>
-            {showSimilar && (
+            {similarOpen && (
               <div className="flex flex-col gap-2 mt-3 animate-[fadeUp_0.3s_ease_both]">
                 {similar.map((s) => (
                   <button
@@ -193,8 +195,10 @@ export default function ProductCard({ perfume, onToggleSave, saved }: ProductCar
 // 찜 상태는 자체적으로 localStorage와 동기화한다.
 export function PerfumeModal({ perfume, onClose }: { perfume: Perfume; onClose: () => void }) {
   const [saved, setSaved] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     setSaved(getSavedIds().includes(perfume.id));
   }, [perfume.id]);
 
@@ -221,7 +225,10 @@ export function PerfumeModal({ perfume, onClose }: { perfume: Perfume; onClose: 
     }
   };
 
-  return (
+  if (!mounted) return null;
+
+  // 부모의 transform 애니메이션 때문에 fixed가 깨지지 않도록 body로 포털
+  return createPortal(
     <div
       className="fixed inset-0 z-50 bg-black/55 flex items-end sm:items-center justify-center p-0 sm:p-6"
       onClick={onClose}
@@ -230,23 +237,21 @@ export function PerfumeModal({ perfume, onClose }: { perfume: Perfume; onClose: 
       aria-label={`${perfume.brand} ${perfume.name} 상세`}
     >
       <div
-        className="w-full sm:max-w-md max-h-[88vh] overflow-y-auto rounded-t-[24px] sm:rounded-[24px] animate-[fadeUp_0.3s_ease_both]"
+        className="relative w-full sm:max-w-md max-h-[88vh] overflow-y-auto rounded-t-[24px] sm:rounded-[24px] bg-white"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 z-10 flex justify-end p-2 bg-gradient-to-b from-black/20 to-transparent sm:bg-none">
-          <button
-            onClick={onClose}
-            aria-label="닫기"
-            className="w-8 h-8 rounded-full bg-white border border-[#E5E5E5] text-[#555555] flex items-center justify-center hover:text-[#111111] hover:border-[#111111] transition-colors shadow-sm"
-          >
-            ×
-          </button>
-        </div>
-        <div className="-mt-10">
-          <ProductCard perfume={perfume} saved={saved} onToggleSave={toggle} />
-        </div>
+        <button
+          onClick={onClose}
+          aria-label="닫기"
+          className="absolute top-3 right-3 z-20 w-9 h-9 rounded-full bg-white border border-[#E5E5E5] text-[#555555] text-lg flex items-center justify-center hover:text-[#111111] hover:border-[#111111] transition-colors shadow-sm"
+        >
+          ×
+        </button>
+        {/* 모달 안에서는 비슷한 향수 섹션을 숨겨 무한 추천 체인을 막는다 */}
+        <ProductCard perfume={perfume} saved={saved} onToggleSave={toggle} showSimilar={false} />
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
