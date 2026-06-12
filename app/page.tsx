@@ -5,6 +5,7 @@ import Link from "next/link";
 import Loading from "@/components/Loading";
 import ResultView from "@/components/ResultView";
 import ProductImage from "@/components/ProductImage";
+import { PerfumeModal } from "@/components/ProductCard";
 import { PERFUMES } from "@/data/perfumes";
 import type { Perfume } from "@/data/perfumes";
 
@@ -36,6 +37,7 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [dragging, setDragging] = useState(false);
   const [popular, setPopular] = useState<{ perfume: Perfume; count: number }[]>([]);
+  const [detail, setDetail] = useState<Perfume | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -294,11 +296,9 @@ export default function Home() {
                 <ol className="flex flex-col gap-1">
                   {popular.map(({ perfume, count }, i) => (
                     <li key={perfume.id}>
-                      <a
-                        href={perfume.channels?.[0]?.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-4 py-2.5 px-2 rounded-xl transition-colors hover:bg-[#F7F7F7] group"
+                      <button
+                        onClick={() => setDetail(perfume)}
+                        className="w-full text-left flex items-center gap-4 py-2.5 px-2 rounded-xl transition-colors hover:bg-[#F7F7F7] group"
                       >
                         <span className={`w-6 text-center text-sm font-extrabold flex-shrink-0 ${i === 0 ? "text-[#111111]" : "text-[#BBBBBB]"}`}>
                           {i + 1}
@@ -314,7 +314,7 @@ export default function Home() {
                           <HeartSmallIcon />
                           {count}
                         </span>
-                      </a>
+                      </button>
                     </li>
                   ))}
                 </ol>
@@ -334,6 +334,8 @@ export default function Home() {
         {state === "result" && result && (
           <ResultView data={result} previews={images.map(i => i.preview)} onReset={reset} />
         )}
+
+        {detail && <PerfumeModal perfume={detail} onClose={() => setDetail(null)} />}
       </main>
     </div>
   );
