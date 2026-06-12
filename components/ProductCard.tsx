@@ -27,10 +27,10 @@ export default function ProductCard({ perfume, onToggleSave, saved }: ProductCar
     <article className="bg-white rounded-[20px] border border-[#E5E5E5] overflow-hidden transition-shadow duration-300 hover:shadow-lg">
       {/* 상단: 이미지 + 기본 정보 */}
       <div className="flex">
-        {/* 썸네일 — 흰 배경, 칸에 꽉 차게 */}
+        {/* 썸네일 — 흰 배경, 큰 이미지 칸 + 여백 있게 */}
         <div
-          className="flex-shrink-0 bg-white flex items-center justify-center border-r border-[#F0F0F0]"
-          style={{ width: 132, minHeight: 150 }}
+          className="flex-shrink-0 bg-white flex items-center justify-center border-r border-[#F0F0F0] p-4"
+          style={{ width: 168, minHeight: 190 }}
         >
           <ProductImage imageUrl={perfume.imageUrl} family={perfume.family} fill />
         </div>
