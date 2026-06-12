@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ProductImage from "./ProductImage";
+import { getSimilarPerfumes } from "@/data/perfumes";
 import type { Perfume } from "@/data/perfumes";
 
 interface ProductCardProps {
@@ -13,6 +14,8 @@ interface ProductCardProps {
 export default function ProductCard({ perfume, onToggleSave, saved }: ProductCardProps) {
   const firstChannel = perfume.channels?.[0];
   const [popping, setPopping] = useState(false);
+  const [showSimilar, setShowSimilar] = useState(false);
+  const similar = getSimilarPerfumes(perfume.id, 3);
 
   const handleSave = () => {
     onToggleSave(perfume.id);
@@ -24,12 +27,12 @@ export default function ProductCard({ perfume, onToggleSave, saved }: ProductCar
     <article className="bg-white rounded-[20px] border border-[#E5E5E5] overflow-hidden transition-shadow duration-300 hover:shadow-lg">
       {/* 상단: 이미지 + 기본 정보 */}
       <div className="flex">
-        {/* 썸네일 — 크기 고정으로 이미지 깨져도 레이아웃 유지 */}
+        {/* 썸네일 — 흰 배경, 칸에 꽉 차게 */}
         <div
-          className="flex-shrink-0 bg-[#F5F5F5] flex items-center justify-center p-3"
-          style={{ width: 96, minHeight: 96 }}
+          className="flex-shrink-0 bg-white flex items-center justify-center border-r border-[#F0F0F0]"
+          style={{ width: 132, minHeight: 150 }}
         >
-          <ProductImage imageUrl={perfume.imageUrl} family={perfume.family} size={66} />
+          <ProductImage imageUrl={perfume.imageUrl} family={perfume.family} fill />
         </div>
 
         {/* 정보 */}
@@ -64,7 +67,7 @@ export default function ProductCard({ perfume, onToggleSave, saved }: ProductCar
         </div>
       </div>
 
-      <div className="px-5 pb-5 flex flex-col gap-4">
+      <div className="px-5 pb-5 pt-4 flex flex-col gap-4 border-t border-[#F0F0F0]">
         {/* AI 추천 이유 */}
         <div className="bg-[#F7F7F7] rounded-xl px-4 py-3.5 border border-[#EEEEEE]">
           <p className="text-[10px] text-[#999999] mb-1.5 font-semibold tracking-wide">이 무드라면</p>
@@ -72,7 +75,7 @@ export default function ProductCard({ perfume, onToggleSave, saved }: ProductCar
         </div>
 
         {/* 노트 피라미드 */}
-        <div className="border-t border-[#EEEEEE] pt-4 flex flex-col gap-2.5">
+        <div className="flex flex-col gap-2.5">
           <NoteRow label="탑" value={perfume.notes.top} shade="#111111" />
           <NoteRow label="미들" value={perfume.notes.mid} shade="#666666" />
           <NoteRow label="베이스" value={perfume.notes.base} shade="#AAAAAA" />
@@ -98,6 +101,49 @@ export default function ProductCard({ perfume, onToggleSave, saved }: ProductCar
           </a>
         ) : (
           <p className="text-center text-xs text-[#999999] mt-1">온라인 판매처 정보 없음</p>
+        )}
+
+        {/* 비슷한 향수 보기 */}
+        {similar.length > 0 && (
+          <div className="border-t border-[#EEEEEE] pt-3">
+            <button
+              onClick={() => setShowSimilar((v) => !v)}
+              aria-expanded={showSimilar}
+              className="w-full flex items-center justify-between text-[13px] font-semibold text-[#555555] hover:text-[#111111] transition-colors py-1"
+            >
+              비슷한 향수 보기
+              <span
+                className="text-[#999999] transition-transform duration-300"
+                style={{ transform: showSimilar ? "rotate(90deg)" : "none" }}
+                aria-hidden="true"
+              >
+                더보기 ›
+              </span>
+            </button>
+            {showSimilar && (
+              <div className="flex flex-col gap-2 mt-3 animate-[fadeUp_0.3s_ease_both]">
+                {similar.map((s) => (
+                  <a
+                    key={s.id}
+                    href={s.channels?.[0]?.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-2.5 rounded-xl border border-[#EEEEEE] bg-[#FAFAFA] transition-all hover:border-[#111111] hover:bg-white group"
+                  >
+                    <span className="flex-shrink-0 w-12 h-12 bg-white rounded-lg border border-[#F0F0F0] flex items-center justify-center overflow-hidden">
+                      <ProductImage imageUrl={s.imageUrl} family={s.family} size={44} />
+                    </span>
+                    <span className="flex-1 min-w-0">
+                      <span className="block text-[9px] text-[#999999] tracking-wider uppercase">{s.brand}</span>
+                      <span className="block text-[13px] font-semibold text-[#111111] truncate group-hover:underline">{s.name}</span>
+                      <span className="block text-[11px] text-[#999999] mt-0.5">{s.family} · {s.priceText}</span>
+                    </span>
+                    <span className="text-[#CCCCCC] group-hover:text-[#111111] transition-colors flex-shrink-0" aria-hidden="true">›</span>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
         )}
       </div>
     </article>

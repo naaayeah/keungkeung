@@ -399,3 +399,22 @@ export function getPerfumeSeedList() {
     id, brand, name, family, mood: mood.join(", "), tier,
   }));
 }
+
+// 같은 향조·무드 기반 유사 향수 추천 (점수: 향조 토큰 2점 + 무드 겹침 1점)
+export function getSimilarPerfumes(id: string, limit = 3): Perfume[] {
+  const base = getPerfumeById(id);
+  if (!base) return [];
+  const baseFamilies = base.family.split("·").map((s) => s.trim());
+  const baseMoods = new Set(base.mood);
+  return PERFUMES
+    .filter((p) => p.id !== id)
+    .map((p) => {
+      const familyScore = p.family.split("·").map((s) => s.trim())
+        .filter((f) => baseFamilies.includes(f)).length * 2;
+      const moodScore = p.mood.filter((m) => baseMoods.has(m)).length;
+      return { p, score: familyScore + moodScore };
+    })
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map(({ p }) => p);
+}
