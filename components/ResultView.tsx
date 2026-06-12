@@ -17,12 +17,13 @@ interface ResultData {
 
 interface ResultViewProps {
   data: ResultData;
+  previews: string[];
   onReset: () => void;
 }
 
 const GRADIENT = "linear-gradient(90deg, #FF8FB1, #A586FF, #5AA9FF)";
 
-export default function ResultView({ data, onReset }: ResultViewProps) {
+export default function ResultView({ data, previews, onReset }: ResultViewProps) {
   const [saved, setSaved] = useState<Set<string>>(new Set());
 
   useEffect(() => {
@@ -52,6 +53,42 @@ export default function ResultView({ data, onReset }: ResultViewProps) {
 
   return (
     <section className="flex flex-col gap-8 animate-[fadeUp_0.5s_ease_both]">
+
+      {/* 업로드 이미지 콜라주 */}
+      {previews.length > 0 && (
+        <div className="rounded-[22px] overflow-hidden relative">
+          {previews.length === 1 ? (
+            <img src={previews[0]} alt="무드 이미지" className="w-full max-h-64 object-cover" />
+          ) : (
+            <div className={`grid gap-1 ${previews.length === 2 ? "grid-cols-2" : previews.length === 3 ? "grid-cols-3" : "grid-cols-2"}`}>
+              {previews.slice(0, previews.length > 4 ? 3 : 4).map((src, i) => {
+                const isLast = previews.length > 4 && i === 2;
+                return (
+                  <div
+                    key={i}
+                    className={`relative overflow-hidden ${
+                      previews.length === 3 ? "aspect-square" :
+                      previews.length === 2 ? "aspect-[3/4]" :
+                      i === 0 ? "row-span-2 aspect-auto" : "aspect-square"
+                    }`}
+                    style={previews.length >= 4 && i === 0 ? { gridRow: "span 2" } : {}}
+                  >
+                    <img src={src} alt={`무드 이미지 ${i + 1}`} className="w-full h-full object-cover" />
+                    {isLast && (
+                      <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                        <span className="text-white font-bold text-xl">+{previews.length - 3}</span>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+          {/* 오버레이 그라데이션 */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+        </div>
+      )}
+
       {/* SCENT READING */}
       <div className="text-center px-2 pb-6 border-b border-[#ECEDF1]">
         <p
@@ -65,23 +102,20 @@ export default function ResultView({ data, onReset }: ResultViewProps) {
         </p>
         <div className="flex flex-wrap gap-2 justify-center">
           {data.moodKeywords.map((kw, i) => (
-            <span
-              key={i}
-              className="text-xs px-3 py-1 rounded-full border text-[#6B6E7B] border-[#ECEDF1]"
-            >
+            <span key={i} className="text-xs px-3 py-1 rounded-full border text-[#6B6E7B] border-[#ECEDF1]">
               {kw}
             </span>
           ))}
         </div>
       </div>
 
-      {/* match description */}
+      {/* 나랑 잘 맞는 향 */}
       <div>
         <SectionTitle>나랑 잘 맞는 향</SectionTitle>
         <p className="text-[15px] text-[#17171C] leading-relaxed">{data.matchDescription}</p>
       </div>
 
-      {/* families */}
+      {/* 향조 */}
       {data.families.length > 0 && (
         <div>
           <SectionTitle>이 무드의 향조</SectionTitle>
@@ -101,7 +135,7 @@ export default function ResultView({ data, onReset }: ResultViewProps) {
         </div>
       )}
 
-      {/* picks by tier */}
+      {/* 가격대별 추천 */}
       <div>
         <SectionTitle>가격대별 추천</SectionTitle>
         <div className="flex flex-col gap-6">
@@ -117,15 +151,13 @@ export default function ResultView({ data, onReset }: ResultViewProps) {
         </div>
       </div>
 
-      {/* reset */}
       <button
         onClick={onReset}
-        className="w-full py-3 rounded-2xl border border-[#ECEDF1] text-[#6B6E7B] text-sm hover:border-[#2D6CFF] hover:text-[#2D6CFF] transition-colors focus-visible:outline-2 focus-visible:outline-[#2D6CFF]"
+        className="w-full py-3 rounded-2xl border border-[#ECEDF1] text-[#6B6E7B] text-sm hover:border-[#2D6CFF] hover:text-[#2D6CFF] transition-colors"
       >
         다른 이미지로 다시 찾기
       </button>
 
-      {/* disclaimer */}
       <p className="text-[11px] text-[#9A9CA8] text-center leading-relaxed pb-2">
         AI가 이미지를 해석해 큐레이션 목록에서 고른 추천이며, 실제 향은 다르게 느껴질 수 있습니다.
       </p>
@@ -142,10 +174,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 }
 
 function TierGroup({
-  label,
-  picks,
-  saved,
-  onToggle,
+  label, picks, saved, onToggle,
 }: {
   label: string;
   picks: PerfumePick[];
@@ -157,12 +186,7 @@ function TierGroup({
       <p className="text-xs text-[#9A9CA8] mb-2 font-medium">{label}</p>
       <div className="flex flex-col gap-3">
         {picks.map((p) => (
-          <ProductCard
-            key={p.id}
-            perfume={p}
-            saved={saved.has(p.id)}
-            onToggleSave={onToggle}
-          />
+          <ProductCard key={p.id} perfume={p} saved={saved.has(p.id)} onToggleSave={onToggle} />
         ))}
       </div>
     </div>

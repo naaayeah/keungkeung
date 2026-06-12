@@ -8,6 +8,12 @@ const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 const MAX_BYTES = 5 * 1024 * 1024;
+const MAX_IMAGES = 10;
+
+interface ImageInput {
+  base64: string;
+  mediaType: string;
+}
 
 interface AiResponse {
   moodOneLiner: string;
@@ -17,15 +23,16 @@ interface AiResponse {
   picks: { id: string; reason: string }[];
 }
 
-function buildPrompt(): string {
+function buildPrompt(imageCount: number): string {
   const list = getPerfumeSeedList()
-    .map(
-      (p) =>
-        `${p.id}|${p.brand}|${p.name}|${p.family}|${p.tier}|무드:${p.mood}`
-    )
+    .map((p) => `${p.id}|${p.brand}|${p.name}|${p.family}|${p.tier}|무드:${p.mood}`)
     .join("\n");
 
-  return `당신은 향수 큐레이터입니다. 이미지의 분위기·색감·질감·계절감을 분석해, 아래 큐레이션 목록에서 가장 잘 어울리는 향수를 고르세요.
+  const imgDesc = imageCount > 1
+    ? `${imageCount}장의 이미지 전체에서 공통되는 분위기·색감·질감·계절감을 종합적으로 분석해,`
+    : "이미지의 분위기·색감·질감·계절감을 분석해,";
+
+  return `당신은 향수 큐레이터입니다. ${imgDesc} 아래 큐레이션 목록에서 가장 잘 어울리는 향수를 고르세요.
 
 규칙:
 - 반드시 아래 향수 목록의 id만 사용. 목록에 없는 향수는 절대 만들지 마세요.
@@ -50,36 +57,27 @@ ${list}
 }`;
 }
 
-async function callAI(
-  base64: string,
-  mediaType: string
-): Promise<AiResponse> {
-  const prompt = buildPrompt();
+async function callAI(images: ImageInput[]): Promise<AiResponse> {
+  const prompt = buildPrompt(images.length);
 
   const tryParse = async (): Promise<AiResponse> => {
+    const imageBlocks = images.map((img) => ({
+      type: "image" as const,
+      source: {
+        type: "base64" as const,
+        media_type: img.mediaType as "image/jpeg" | "image/png" | "image/webp" | "image/gif",
+        data: img.base64,
+      },
+    }));
+
     const msg = await client.messages.create({
       model: "claude-sonnet-4-6",
       max_tokens: 2000,
-      system:
-        "당신은 향수 큐레이터입니다. JSON만 출력합니다. 코드펜스, 설명, 인사를 절대 쓰지 않습니다.",
+      system: "당신은 향수 큐레이터입니다. JSON만 출력합니다. 코드펜스, 설명, 인사를 절대 쓰지 않습니다.",
       messages: [
         {
           role: "user",
-          content: [
-            {
-              type: "image",
-              source: {
-                type: "base64",
-                media_type: mediaType as
-                  | "image/jpeg"
-                  | "image/png"
-                  | "image/webp"
-                  | "image/gif",
-                data: base64,
-              },
-            },
-            { type: "text", text: prompt },
-          ],
+          content: [...imageBlocks, { type: "text" as const, text: prompt }],
         },
       ],
     });
@@ -89,10 +87,7 @@ async function callAI(
       .map((b) => (b as { type: "text"; text: string }).text)
       .join("");
 
-    const cleaned = text
-      .replace(/```json\s*/gi, "")
-      .replace(/```\s*/gi, "")
-      .trim();
+    const cleaned = text.replace(/```json\s*/gi, "").replace(/```\s*/gi, "").trim();
     const start = cleaned.indexOf("{");
     const end = cleaned.lastIndexOf("}");
     if (start === -1 || end === -1) throw new Error("no json");
@@ -102,103 +97,66 @@ async function callAI(
   try {
     return await tryParse();
   } catch {
-    // 1 retry
     return await tryParse();
   }
 }
 
 export async function POST(req: NextRequest) {
-  const ip =
-    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
 
   const rl = checkRateLimit(ip);
   if (!rl.allowed) {
     const messages: Record<string, string> = {
       per_minute: "너무 빠르게 요청하고 있어요. 잠시 후 다시 시도해 주세요.",
       per_hour: "시간당 분석 횟수를 초과했어요. 나중에 다시 시도해 주세요.",
-      daily:
-        "오늘 분석 횟수를 모두 사용했어요. 내일 다시 이용해 주세요.",
+      daily: "오늘 분석 횟수를 모두 사용했어요. 내일 다시 이용해 주세요.",
     };
-    return NextResponse.json(
-      { error: messages[rl.reason] },
-      { status: 429 }
-    );
+    return NextResponse.json({ error: messages[rl.reason] }, { status: 429 });
   }
 
-  let base64: string;
-  let mediaType: string;
+  const body = await req.json();
 
-  const contentType = req.headers.get("content-type") ?? "";
-
-  if (contentType.includes("multipart/form-data")) {
-    const form = await req.formData();
-    const file = form.get("image") as File | null;
-    if (!file) {
-      return NextResponse.json(
-        { error: "이미지 파일이 없어요." },
-        { status: 400 }
-      );
-    }
-    if (!ALLOWED_TYPES.includes(file.type)) {
-      return NextResponse.json(
-        { error: "JPG, PNG, WEBP 형식의 이미지만 지원해요." },
-        { status: 400 }
-      );
-    }
-    if (file.size > MAX_BYTES) {
-      return NextResponse.json(
-        { error: "이미지 크기는 5MB 이하여야 해요." },
-        { status: 400 }
-      );
-    }
-    mediaType = file.type;
-    const buf = await file.arrayBuffer();
-    base64 = Buffer.from(buf).toString("base64");
+  // 단일 이미지 (하위 호환) or 복수 이미지 배열
+  let images: ImageInput[];
+  if (Array.isArray(body.images)) {
+    images = body.images;
+  } else if (body.base64 && body.mediaType) {
+    images = [{ base64: body.base64, mediaType: body.mediaType }];
   } else {
-    const body = await req.json();
-    if (!body.base64 || !body.mediaType) {
-      return NextResponse.json(
-        { error: "이미지 데이터가 없어요." },
-        { status: 400 }
-      );
-    }
-    if (!ALLOWED_TYPES.includes(body.mediaType)) {
-      return NextResponse.json(
-        { error: "JPG, PNG, WEBP 형식의 이미지만 지원해요." },
-        { status: 400 }
-      );
-    }
-    const byteLen = Math.ceil((body.base64.length * 3) / 4);
-    if (byteLen > MAX_BYTES) {
-      return NextResponse.json(
-        { error: "이미지 크기는 5MB 이하여야 해요." },
-        { status: 400 }
-      );
-    }
-    base64 = body.base64;
-    mediaType = body.mediaType;
+    return NextResponse.json({ error: "이미지 데이터가 없어요." }, { status: 400 });
   }
 
-  const cacheKey = hashImage(base64);
+  if (images.length > MAX_IMAGES) {
+    return NextResponse.json({ error: `이미지는 최대 ${MAX_IMAGES}장까지 업로드할 수 있어요.` }, { status: 400 });
+  }
+
+  for (const img of images) {
+    if (!ALLOWED_TYPES.includes(img.mediaType)) {
+      return NextResponse.json({ error: "JPG, PNG, WEBP 형식의 이미지만 지원해요." }, { status: 400 });
+    }
+    const byteLen = Math.ceil((img.base64.length * 3) / 4);
+    if (byteLen > MAX_BYTES) {
+      return NextResponse.json({ error: "각 이미지는 5MB 이하여야 해요." }, { status: 400 });
+    }
+  }
+
+  // 캐시 키: 모든 이미지 해시 조합
+  const cacheKey = images.map((img) => hashImage(img.base64)).join("-");
   const cached = getCached(cacheKey);
   if (cached) {
-    return NextResponse.json({ ...cached as object, cached: true });
+    return NextResponse.json({ ...(cached as object), cached: true });
   }
 
   let aiResult: AiResponse;
   try {
-    aiResult = await callAI(base64, mediaType);
+    aiResult = await callAI(images);
   } catch {
     return NextResponse.json(
-      {
-        error:
-          "향을 읽어내지 못했어요. 다른 이미지로 다시 시도해 주세요.",
-      },
+      { error: "향을 읽어내지 못했어요. 다른 이미지로 다시 시도해 주세요." },
       { status: 500 }
     );
   }
 
-  // merge picks with seed data, filter invalid ids
   const picks = (aiResult.picks ?? [])
     .map(({ id, reason }) => {
       const perfume = getPerfumeById(id);
