@@ -161,6 +161,9 @@ export default function ResultView({ data, previews, onReset }: ResultViewProps)
       <p className="text-[11px] text-[#9A9CA8] text-center leading-relaxed pb-2">
         AI가 이미지를 해석해 큐레이션 목록에서 고른 추천이며, 실제 향은 다르게 느껴질 수 있습니다.
       </p>
+      {/* TODO: 제휴(어필리에이트) 링크로 전환 시 아래 문구를 반드시 노출해야 합니다.
+          예) "이 페이지의 일부 링크는 제휴 링크로, 구매 시 수수료를 받을 수 있습니다."
+          channels 배열의 affiliate: true 항목이 하나라도 있으면 자동 표시하도록 구현 권장. */}
     </section>
   );
 }

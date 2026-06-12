@@ -3,7 +3,7 @@ export type Tier = "entry" | "mid" | "luxury";
 export interface PerfumeChannel {
   name: string;
   url: string;
-  affiliate: boolean;
+  affiliate: boolean; // 제휴 전환 시 true로 바꾸고 대가성 문구 추가 필요
 }
 
 export interface Perfume {
@@ -12,13 +12,12 @@ export interface Perfume {
   name: string;
   family: string;
   tier: Tier;
-  priceText: string;
+  priceText: string;   // 표시용 가격대만 ("약 18만원대"). 정확한 가격은 판매처에서 확인.
   notes: { top: string; mid: string; base: string };
   mood: string[];
   desc: string;
   review: string;
-  imageUrl?: string;
-  brandUrl?: string;
+  imageUrl?: string;   // 핫링크 테스트용. 출시 전 권리 확보 또는 자체 호스팅 권장.
   channels?: PerfumeChannel[];
 }
 
@@ -35,8 +34,9 @@ export const PERFUMES: Perfume[] = [
     desc: "이슬 맺힌 꽃밭 위로 번지는 상큼하고 가볍게 달콤한 향. 무겁지 않아 데일리로 쓰기 딱 좋은 프레시 플로럴.",
     review: "지속력이 좋고 은은해서 '향수 처음 쓰는 사람 입문용'으로 자주 추천됨. 사무실에도 부담 없다는 평가 다수.",
     imageUrl: "https://www.chanel.com/images//t_one//w_0.51,h_0.51,c_crop/q_auto:good,f_jpg/w_844/FSH-1686052063027-chanceeau1tendreefp100ml_packshot_default_0-channel-56x56.jpg",
-    brandUrl: "https://www.chanel.com/kr/fragrance/women/chance-eau-tendre/",
-    channels: [],
+    channels: [
+      { name: "Chanel 공식몰", url: "https://www.chanel.com/kr/fragrance/women/chance-eau-tendre/", affiliate: false },
+    ],
   },
   {
     id: "dior-miss-dior-blooming",
@@ -49,9 +49,10 @@ export const PERFUMES: Perfume[] = [
     mood: ["페미닌", "로맨틱", "파스텔", "봄", "소녀감성", "플로럴"],
     desc: "분홍빛 모란꽃이 가득 핀 정원처럼 달콤하고 사랑스러운 향. 파우더리한 피부 잔향이 오래 남는다.",
     review: "선물 1순위로 꼽히는 향수. '딱 여자 향'이라는 평가. 어리고 청순한 이미지를 원할 때.",
-    imageUrl: "https://www.dior.com/dw/image/v2/BGXS_PRD/on/demandware.static/-/Sites-master-catalog/default/dw7c00000a/Y0969354/Y0969354_C099600455_E01_GHC.jpg?sw=800&sh=800&sm=fit",
-    brandUrl: "https://www.dior.com/ko_kr/beauty/fragrances/womens-fragrances/miss-dior",
-    channels: [],
+    imageUrl: "",
+    channels: [
+      { name: "Dior 공식몰", url: "https://www.dior.com/ko_kr/beauty/fragrances/womens-fragrances/miss-dior", affiliate: false },
+    ],
   },
   {
     id: "ysl-libre",
@@ -62,11 +63,12 @@ export const PERFUMES: Perfume[] = [
     priceText: "약 17만원대",
     notes: { top: "라벤더, 만다린 오렌지", mid: "오렌지 블로섬, 재스민", base: "앰버, 바닐라, 시더우드" },
     mood: ["자유로운", "독립적", "대담한", "도시적", "성숙한"],
-    desc: "라벤더의 신선함과 따뜻한 앰버 베이스가 충돌하며 만들어내는 대범하고 관능적인 향. 남녀 경계를 허문다.",
+    desc: "라벤더의 신선함과 따뜻한 앰버 베이스가 충돌하며 만들어내는 대범하고 관능적인 향.",
     review: "자신감 있는 여성 이미지. '뿌리면 나도 모르게 어깨가 펴진다'는 후기 많음.",
-    imageUrl: "https://www.yslbeauty.co.kr/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-ysl-master-catalog/default/dw45e4e785/2023/Fragrance/YSL_LIBRE/YSL_FRG_LIBRE_EDP_90ML_1.jpg?sw=600&sh=600&sm=fit",
-    brandUrl: "https://www.yslbeauty.co.kr/fragrance/women/libre/",
-    channels: [],
+    imageUrl: "",
+    channels: [
+      { name: "YSL 공식몰", url: "https://www.yslbeauty.co.kr/fragrance/women/libre/", affiliate: false },
+    ],
   },
   {
     id: "jo-malone-peony-blush-suede",
@@ -80,8 +82,10 @@ export const PERFUMES: Perfume[] = [
     desc: "탐스러운 피오니 꽃잎과 따뜻한 스웨이드 가죽 향이 어우러져 고급스럽고 포근한 우아함을 만들어낸다.",
     review: "많은 향수 애호가가 '인생 향수'로 꼽는 작품. 결혼식, 데이트, 파티 어디서나 품위 있다.",
     imageUrl: "https://www.jomalone.co.kr/media/export/cms/products/600x600/jo_sku_L0J701_600x600_0.jpg",
-    brandUrl: "https://www.jomalone.co.kr/product/22254/peony-blush-suede-cologne",
-    channels: [],
+    channels: [
+      { name: "Jo Malone 공식몰", url: "https://www.jomalone.co.kr/product/22254/peony-blush-suede-cologne", affiliate: false },
+      { name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=jo+malone+peony", affiliate: false },
+    ],
   },
   {
     id: "maison-margiela-replica-beach-walk",
@@ -94,9 +98,10 @@ export const PERFUMES: Perfume[] = [
     mood: ["바다", "여름", "자유로운", "노스탤직", "따뜻한"],
     desc: "선크림 향이 살짝 배인 따뜻한 해변 공기. 파도 소리가 들릴 것 같은 여름의 기억.",
     review: "'이거 선크림 향이다'는 사람들이 계속 맡으러 온다. 여름에 유독 어울리는 향수 1위.",
-    imageUrl: "https://www.maisonmargiela-fragrances.com/dw/image/v2/BCCK_PRD/on/demandware.static/-/Sites-mmf-master-catalog/default/dw2f18ccb1/images/large/S57WI0066.jpg?sw=600&sh=600&sm=fit",
-    brandUrl: "https://www.maisonmargiela-fragrances.com/ko-kr/replica/beach-walk/",
-    channels: [],
+    imageUrl: "",
+    channels: [
+      { name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=replica+beach+walk", affiliate: false },
+    ],
   },
   {
     id: "le-labo-santal-33",
@@ -109,9 +114,11 @@ export const PERFUMES: Perfume[] = [
     mood: ["미니멀", "도시적", "스모키", "젠더리스", "고급스러운", "독특한"],
     desc: "연기 낀 서부 황야와 뉴욕 갤러리가 동시에 연상되는 드라이하고 섹시한 우드 향.",
     review: "패션계에서 '숨겨둔 향수'로 유명. 뿌리면 주변 사람들이 반드시 묻는다고.",
-    imageUrl: "https://www.lelabofragrances.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-le-labo-master-catalog/default/dw28a4ad7d/images/large/SANTAL33_EDP_50ML_Bottle_Packaging.jpg?sw=600&sh=600&sm=fit",
-    brandUrl: "https://www.lelabofragrances.com/santal-33.html",
-    channels: [],
+    imageUrl: "",
+    channels: [
+      { name: "Le Labo 공식몰", url: "https://www.lelabofragrances.com/santal-33.html", affiliate: false },
+      { name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=santal+33", affiliate: false },
+    ],
   },
   {
     id: "diptyque-tam-dao",
@@ -124,9 +131,11 @@ export const PERFUMES: Perfume[] = [
     mood: ["명상적인", "차분한", "미니멀", "선(禪)", "내추럴"],
     desc: "갓 깎은 부드러운 샌달우드가 전면에 오는, 인센스 같은 정적이고 명상적인 향.",
     review: "향수를 '잘 모르는' 사람도 '이건 좋다'고 하는 향. 성별·상황 타지 않는다.",
-    imageUrl: "https://www.diptyqueparis.com/dw/image/v2/BCCK_PRD/on/demandware.static/-/Sites-diptyque-master-catalog/default/dwcbdc1f16/images/large/DP_TamDao_EDP75ml.jpg?sw=600&sh=600",
-    brandUrl: "https://www.diptyqueparis.com/ko_kr/p/tam-dao-eau-de-parfum-75ml.html",
-    channels: [],
+    imageUrl: "",
+    channels: [
+      { name: "Diptyque 공식몰", url: "https://www.diptyqueparis.com/ko_kr/p/tam-dao-eau-de-parfum-75ml.html", affiliate: false },
+      { name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=diptyque+tam+dao", affiliate: false },
+    ],
   },
   {
     id: "tom-ford-black-orchid",
@@ -139,9 +148,11 @@ export const PERFUMES: Perfume[] = [
     mood: ["신비로운", "어두운", "섹시한", "관능적", "파티", "드라마틱"],
     desc: "검은 난초와 다크 초콜릿, 흙 냄새가 섞인 깊고 무거운 관능적인 향.",
     review: "사랑하거나 싫어하거나 극단으로 갈리는 향. 좋아하면 집착하게 된다는 평.",
-    imageUrl: "https://www.tomford.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-tomford-master-catalog/default/dw6a3282cb/images/large/T4HB01_T4HA6_MULTIVIEW.jpg?sw=600&sh=600&sm=fit",
-    brandUrl: "https://www.tomford.com/black-orchid/T4HB01.html",
-    channels: [],
+    imageUrl: "",
+    channels: [
+      { name: "Tom Ford 공식몰", url: "https://www.tomford.com/black-orchid/T4HB01.html", affiliate: false },
+      { name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=tom+ford+black+orchid", affiliate: false },
+    ],
   },
   {
     id: "byredo-mojave-ghost",
@@ -154,9 +165,11 @@ export const PERFUMES: Perfume[] = [
     mood: ["사막", "미니멀", "건조한", "자유로운", "서정적"],
     desc: "모하비 사막 한가운데 피어난 희귀한 꽃처럼, 따뜻하고 건조하고 살짝 달콤한 우드 플로럴.",
     review: "중성적이고 개성 있다는 평가. 한 번 맡으면 잊히지 않는다.",
-    imageUrl: "https://www.byredo.com/dw/image/v2/BCCK_PRD/on/demandware.static/-/Sites-byredo-master-catalog/default/dw1ee8ac57/images/large/100ml_mojave_ghost_EDP.jpg?sw=600&sh=600",
-    brandUrl: "https://www.byredo.com/ko_kr/mojave-ghost-eau-de-parfum-100ml",
-    channels: [],
+    imageUrl: "",
+    channels: [
+      { name: "Byredo 공식몰", url: "https://www.byredo.com/ko_kr/mojave-ghost-eau-de-parfum-100ml", affiliate: false },
+      { name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=byredo+mojave+ghost", affiliate: false },
+    ],
   },
   {
     id: "acqua-di-parma-colonia",
@@ -169,9 +182,10 @@ export const PERFUMES: Perfume[] = [
     mood: ["클래식", "깔끔한", "이탈리아", "남성적", "신사"],
     desc: "이탈리아 선샤인을 담은 클래식 콜로뉴. 상쾌한 시트러스와 우디 베이스가 균형 잡힌 단정한 향.",
     review: "남자친구 선물로 추천 1위. 너무 튀지 않는 고급스러운 향이라는 평가.",
-    imageUrl: "https://www.acquadiparma.com/dw/image/v2/BCCK_PRD/on/demandware.static/-/Sites-adp-master-catalog/default/dw8fdba3f3/images/large/57600_COLONIA_EDC_180ml_bottle.jpg?sw=600&sh=600",
-    brandUrl: "https://www.acquadiparma.com/ko-kr/colonia/colonia/",
-    channels: [],
+    imageUrl: "",
+    channels: [
+      { name: "Acqua di Parma 공식몰", url: "https://www.acquadiparma.com/ko-kr/colonia/colonia/", affiliate: false },
+    ],
   },
   {
     id: "narciso-rodriguez-for-her",
@@ -184,9 +198,10 @@ export const PERFUMES: Perfume[] = [
     mood: ["관능적", "성숙한", "세련된", "여성스러운", "피부향"],
     desc: "피부에서 자연스럽게 나는 것 같은 따뜻하고 섹시한 머스크 향. '두 번째 피부 향수'라고 불린다.",
     review: "향수를 많이 아는 사람들이 진짜 애용하는 향수. 묘하게 중독된다는 후기 다수.",
-    imageUrl: "https://www.narcisorodriguez.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-nrod-master-catalog/default/dw6f9d2561/images/large/NROD_FOR-HER_EDP_SPRAY_100ML_F03.jpg?sw=600&sh=600&sm=fit",
-    brandUrl: "https://www.narcisorodriguez.com/fragrance/for-her/",
-    channels: [],
+    imageUrl: "",
+    channels: [
+      { name: "올리브영", url: "https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query=narciso+rodriguez", affiliate: false },
+    ],
   },
   {
     id: "versace-eros",
@@ -199,9 +214,10 @@ export const PERFUMES: Perfume[] = [
     mood: ["남성적", "강렬한", "운동적", "활기찬", "자신감"],
     desc: "시원한 민트와 달콤한 통카빈의 대비. 강하고 매력적인 남성향.",
     review: "가성비 최고 남성 향수로 항상 언급됨. 여성들이 '남자친구한테 선물하고 싶다'고 많이 꼽는다.",
-    imageUrl: "https://www.versace.com/dw/image/v2/BGXS_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw80a9c75e/original/90123419_DP220723_001.jpg?sw=600&sh=600&sm=fit",
-    brandUrl: "https://www.versace.com/kr/ko/men/fragrance/eros/",
-    channels: [],
+    imageUrl: "",
+    channels: [
+      { name: "올리브영", url: "https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query=versace+eros", affiliate: false },
+    ],
   },
   {
     id: "prada-candy",
@@ -214,9 +230,10 @@ export const PERFUMES: Perfume[] = [
     mood: ["달콤한", "귀여운", "파티", "로맨틱", "자신감 있는"],
     desc: "캐러멜과 따뜻한 바닐라, 머스크가 만든 달달하고 관능적인 향. 디저트 같은 매혹.",
     review: "사탕 같다고 싫어하는 사람도 있지만, 좋아하면 진짜 오래 애용하게 되는 향수.",
-    imageUrl: "https://www.prada.com/content/dam/pradanux/fragrance/prada-candy/prada-candy-l-eau/prada-candy-l-eau-fragrance.jpg.transform/MyPradaDesktop/img.jpg",
-    brandUrl: "https://www.prada.com/kr/ko/womens/fragrances/prada-candy.html",
-    channels: [],
+    imageUrl: "",
+    channels: [
+      { name: "Prada 공식몰", url: "https://www.prada.com/kr/ko/womens/fragrances/prada-candy.html", affiliate: false },
+    ],
   },
   {
     id: "lancome-la-vie-est-belle",
@@ -229,9 +246,11 @@ export const PERFUMES: Perfume[] = [
     mood: ["행복한", "여성스러운", "달콤한", "자신감 있는", "따뜻한"],
     desc: "달콤하고 풍성한 아이리스 플로럴과 구르망 베이스. 삶이 아름답다는 선언처럼 밝고 따뜻한 향.",
     review: "향수 선물 베스트셀러. 호불호가 없어 받는 사람 모두가 좋아한다는 후기.",
-    imageUrl: "https://www.lancome.co.kr/-/media/project/loreal/brand-sites/lancome/korea/products/fragrance/la-vie-est-belle/la-vie-est-belle-eau-de-parfum-spray-50ml.jpg?rev=f22e3700e5d749d98de2d55a5eb69d3c&cx=0.51&cy=0.47&cw=600&ch=600",
-    brandUrl: "https://www.lancome.co.kr/fragrance/la-vie-est-belle/",
-    channels: [],
+    imageUrl: "",
+    channels: [
+      { name: "Lancôme 공식몰", url: "https://www.lancome.co.kr/fragrance/la-vie-est-belle/", affiliate: false },
+      { name: "올리브영", url: "https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query=lancome+la+vie+est+belle", affiliate: false },
+    ],
   },
   {
     id: "guerlain-mon-guerlain",
@@ -243,10 +262,11 @@ export const PERFUMES: Perfume[] = [
     notes: { top: "라벤더", mid: "재스민, 쿠마린", base: "바닐라, 산달우드" },
     mood: ["로맨틱", "프렌치", "따뜻한", "고급스러운", "나른한"],
     desc: "프로방스 라벤더밭에 누운 듯 달콤하고 따뜻한 향. 재스민과 바닐라가 더해져 매우 편안하다.",
-    review: "앙헬리나 졸리 모델 향수. '자고 싶어지는 향수'라는 별명이 있을 정도로 포근함.",
-    imageUrl: "https://www.guerlain.com/dw/image/v2/BCCK_PRD/on/demandware.static/-/Sites-guerlain-master-catalog/default/dw09ba2f91/images/large/guerlain-mon-guerlain-eau-de-parfum-spray-100ml-G040219.jpg?sw=600&sh=600",
-    brandUrl: "https://www.guerlain.com/ko/ko-kr/c/mon-guerlain-fragrance.html",
-    channels: [],
+    review: "'자고 싶어지는 향수'라는 별명이 있을 정도로 포근함.",
+    imageUrl: "",
+    channels: [
+      { name: "Guerlain 공식몰", url: "https://www.guerlain.com/ko/ko-kr/c/mon-guerlain-fragrance.html", affiliate: false },
+    ],
   },
   {
     id: "chloe-eau-de-parfum",
@@ -259,9 +279,10 @@ export const PERFUMES: Perfume[] = [
     mood: ["자연스러운", "봄", "내추럴", "여성스러운", "청순한"],
     desc: "맑은 봄 오후 빨래 건조대 앞에 서 있는 것 같은 자연스럽고 포근한 화이트 플로럴.",
     review: "'화이트 머스크의 정석'으로 불림. 데일리로 쓰기 딱 좋다는 리뷰 항상 많음.",
-    imageUrl: "https://www.chloe.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-chloe-master-catalog/default/dw32b3c6de/images/large/Chloe_Eau-de-Parfum_75ml_3614222898368.jpg?sw=600&sh=600",
-    brandUrl: "https://www.chloe.com/ko-kr/fragrances/chloe/",
-    channels: [],
+    imageUrl: "",
+    channels: [
+      { name: "올리브영", url: "https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query=chloe+eau+de+parfum", affiliate: false },
+    ],
   },
   {
     id: "calvin-klein-ck-one",
@@ -274,9 +295,10 @@ export const PERFUMES: Perfume[] = [
     mood: ["미니멀", "클린", "젠더리스", "캐주얼", "자유로운"],
     desc: "1990년대를 정의한 남녀 공용 클린 시트러스. 깨끗하고 상쾌하며 누구나 거부감 없이 쓸 수 있다.",
     review: "가성비 최고, 사계절 내내 쓸 수 있는 베이직 향수로 매년 추천 목록에 오름.",
-    imageUrl: "https://www.calvinklein.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-ck-master-catalog/default/dw71b57f2c/images/large/3607345186930_01.jpg?sw=600&sh=600",
-    brandUrl: "https://www.calvinklein.com/ko-kr/c/fragrances-ck-one",
-    channels: [],
+    imageUrl: "",
+    channels: [
+      { name: "올리브영", url: "https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query=ck+one", affiliate: false },
+    ],
   },
   {
     id: "davidoff-cool-water",
@@ -288,10 +310,11 @@ export const PERFUMES: Perfume[] = [
     notes: { top: "민트, 그린 뉘앙스", mid: "라벤더, 재스민, 제라늄", base: "샌달우드, 머스크, 앰버" },
     mood: ["바다", "여름", "상쾌한", "스포티", "캐주얼"],
     desc: "차가운 바닷물이 몸을 감싸는 것 같은 시원하고 상쾌한 해양 향.",
-    review: "아빠 향수 이미지가 있지만, 레트로 감성으로 다시 주목받는 중. 여름에 특히 잘 어울린다.",
-    imageUrl: "https://www.davidoff.com/dw/image/v2/BCCK_PRD/on/demandware.static/-/Sites-davidoff-master-catalog/default/dwb0a8d8ec/images/large/davidoff-cool-water-edt-125ml.jpg?sw=600&sh=600",
-    brandUrl: "https://www.davidoff.com/cool-water/",
-    channels: [],
+    review: "레트로 감성으로 다시 주목받는 중. 여름에 특히 잘 어울린다.",
+    imageUrl: "",
+    channels: [
+      { name: "올리브영", url: "https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query=davidoff+cool+water", affiliate: false },
+    ],
   },
   {
     id: "armani-acqua-di-gio",
@@ -304,9 +327,10 @@ export const PERFUMES: Perfume[] = [
     mood: ["지중해", "여름", "신사", "상쾌한", "바다", "이탈리안"],
     desc: "카프리 섬의 지중해 공기. 짠 바다 내음과 시트러스, 녹색 식물 향이 어우러진 남성 아쿠아 향의 원조.",
     review: "전 세계 베스트셀러 남성향 1위 자리를 수년째 지키는 향수. '무조건 좋은 향'이라는 평가.",
-    imageUrl: "https://www.giorgioarmanibeauty.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-armani-beauty-master-catalog/default/dwa7f3f82b/images/large/acqua-di-gio-eau-de-toilette-spray-200ml-3614272877535.jpg?sw=600&sh=600",
-    brandUrl: "https://www.giorgioarmanibeauty.com/ko-kr/acqua-di-gio/",
-    channels: [],
+    imageUrl: "",
+    channels: [
+      { name: "올리브영", url: "https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query=acqua+di+gio", affiliate: false },
+    ],
   },
   {
     id: "thierry-mugler-angel",
@@ -319,9 +343,11 @@ export const PERFUMES: Perfume[] = [
     mood: ["대담한", "관능적", "달콤한", "독특한", "파티", "레트로"],
     desc: "달콤한 사탕과 쓴 패출리의 극적인 충돌. 1992년 발매 이후 구르망 향수의 기준점이 된 작품.",
     review: "사랑받거나 기피되거나. 좋아하는 사람은 20년째 쓴다는 장수 향수.",
-    imageUrl: "https://www.mugler.com/dw/image/v2/BCCK_PRD/on/demandware.static/-/Sites-mugler-master-catalog/default/dwbc7c7038/images/large/angel-eau-de-parfum-refillable-spray-100ml-3439600056108.jpg?sw=600&sh=600",
-    brandUrl: "https://www.mugler.com/ko-kr/fragrance/women/angel/",
-    channels: [],
+    imageUrl: "",
+    channels: [
+      { name: "Mugler 공식몰", url: "https://www.mugler.com/ko-kr/fragrance/women/angel/", affiliate: false },
+      { name: "올리브영", url: "https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query=mugler+angel", affiliate: false },
+    ],
   },
   {
     id: "hermes-un-jardin-sur-le-nil",
@@ -334,9 +360,11 @@ export const PERFUMES: Perfume[] = [
     mood: ["이국적인", "자연", "선(禪)", "명상적인", "그린", "여름"],
     desc: "이집트 나일강 위에 떠 있는 정원. 덜 익은 과일과 물가 식물이 만들어내는 싱그럽고 고요한 향.",
     review: "Hermès 가든 시리즈 중 가장 인기 있는 향수. 여름 향수 추천 1위로 자주 꼽힌다.",
-    imageUrl: "https://www.hermes.com/variants/images/9293353767579649/w/960.jpg",
-    brandUrl: "https://www.hermes.com/kr/ko/category/beauty/fragrances/les-jardins-dhermes/",
-    channels: [],
+    imageUrl: "",
+    channels: [
+      { name: "Hermès 공식몰", url: "https://www.hermes.com/kr/ko/category/beauty/fragrances/les-jardins-dhermes/", affiliate: false },
+      { name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=hermes+jardin+nil", affiliate: false },
+    ],
   },
 ];
 

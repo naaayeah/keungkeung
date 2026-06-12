@@ -49,6 +49,11 @@ lib/
   ratelimit.ts          # IP별 분당·일일 제한
 ```
 
+## 주의사항
+
+- `data/perfumes.ts`의 `imageUrl`은 외부 브랜드 CDN을 핫링크하는 테스트용 방식입니다. 출시 전에는 이미지 사용 권리를 확보하거나 자체 호스팅으로 교체하세요. 핫링크가 차단되면 SVG 폴백이 자동으로 표시됩니다.
+- `channels` 배열의 링크는 현재 모두 비제휴(affiliate: false)입니다. 제휴 링크로 전환 시 반드시 대가성 문구를 노출하세요 (ResultView.tsx의 TODO 주석 참고).
+
 ## 주요 정책
 
 - 추천 향수는 `data/perfumes.ts`의 21종 안에서만 나옵니다.

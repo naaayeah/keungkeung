@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import Bottle from "./Bottle";
+import ProductImage from "./ProductImage";
 import type { Perfume } from "@/data/perfumes";
 
 interface ProductCardProps {
@@ -11,24 +10,18 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ perfume, onToggleSave, saved }: ProductCardProps) {
-  const [imgErr, setImgErr] = useState(false);
+  const firstChannel = perfume.channels?.[0];
 
   return (
     <article className="bg-white rounded-[20px] shadow-sm border border-[#ECEDF1] overflow-hidden">
-      {/* 향수 이미지 헤더 */}
-      <div className="flex gap-0">
-        {/* 이미지 */}
-        <div className="w-24 flex-shrink-0 bg-[#F8F8FA] flex items-center justify-center p-3">
-          {perfume.imageUrl && !imgErr ? (
-            <img
-              src={perfume.imageUrl}
-              alt={`${perfume.brand} ${perfume.name}`}
-              className="w-full h-24 object-contain"
-              onError={() => setImgErr(true)}
-            />
-          ) : (
-            <Bottle family={perfume.family} size={56} />
-          )}
+      {/* 상단: 이미지 + 기본 정보 */}
+      <div className="flex">
+        {/* 썸네일 — 크기 고정으로 이미지 깨져도 레이아웃 유지 */}
+        <div
+          className="flex-shrink-0 bg-[#F8F8FA] flex items-center justify-center p-3"
+          style={{ width: 88, minHeight: 88 }}
+        >
+          <ProductImage imageUrl={perfume.imageUrl} family={perfume.family} size={62} />
         </div>
 
         {/* 정보 */}
@@ -42,20 +35,26 @@ export default function ProductCard({ perfume, onToggleSave, saved }: ProductCar
               onClick={() => onToggleSave(perfume.id)}
               aria-label={saved ? "찜 취소" : "찜하기"}
               aria-pressed={saved}
-              className="flex-shrink-0 text-xl transition-transform active:scale-90 mt-0.5"
+              className="flex-shrink-0 text-xl transition-transform active:scale-90 mt-0.5 focus-visible:outline-2 focus-visible:outline-[#2D6CFF] rounded-full"
             >
-              {saved ? <span style={{ color: "#B98E33" }}>♥</span> : <span className="text-[#ECEDF1]">♡</span>}
+              {saved ? (
+                <span style={{ color: "#B98E33" }}>♥</span>
+              ) : (
+                <span className="text-[#ECEDF1]">♡</span>
+              )}
             </button>
           </div>
           <div className="flex flex-wrap gap-1.5 items-center">
-            <span className="text-[11px] px-2 py-0.5 rounded-full bg-[#F4F5F7] text-[#6B6E7B]">{perfume.family}</span>
+            <span className="text-[11px] px-2 py-0.5 rounded-full bg-[#F4F5F7] text-[#6B6E7B]">
+              {perfume.family}
+            </span>
             <span className="text-[11px] text-[#9A9CA8]">{perfume.priceText}</span>
           </div>
         </div>
       </div>
 
       <div className="px-4 pb-4 flex flex-col gap-3">
-        {/* AI reason */}
+        {/* AI 추천 이유 */}
         <div className="bg-gradient-to-r from-[#FF8FB1]/10 via-[#A586FF]/10 to-[#5AA9FF]/10 rounded-xl px-4 py-3">
           <p className="text-[10px] text-[#6B6E7B] mb-1 font-medium">이 무드라면</p>
           <p className="text-sm text-[#17171C] leading-relaxed">{perfume.reason}</p>
@@ -77,16 +76,18 @@ export default function ProductCard({ perfume, onToggleSave, saved }: ProductCar
         </p>
 
         {/* 구매 링크 */}
-        {perfume.brandUrl && (
+        {firstChannel ? (
           <a
-            href={perfume.brandUrl}
+            href={firstChannel.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-1 w-full py-2.5 rounded-xl text-center text-sm font-semibold text-white transition-opacity hover:opacity-90"
+            className="mt-1 w-full py-2.5 rounded-xl text-center text-sm font-semibold text-white transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-[#2D6CFF]"
             style={{ background: "#2D6CFF" }}
           >
-            공식 홈페이지에서 보기 →
+            {firstChannel.name}에서 보기 →
           </a>
+        ) : (
+          <p className="text-center text-xs text-[#9A9CA8] mt-1">온라인 판매처 정보 없음</p>
         )}
       </div>
     </article>
@@ -95,7 +96,7 @@ export default function ProductCard({ perfume, onToggleSave, saved }: ProductCar
 
 function NoteRow({ label, value, color }: { label: string; value: string; color: string }) {
   return (
-    <div className="flex items-center gap-2 text-sm">
+    <div className="flex items-center gap-2">
       <span className="w-7 text-xs font-semibold flex-shrink-0" style={{ color }}>{label}</span>
       <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: color }} aria-hidden="true" />
       <span className="text-[#17171C] font-light text-xs">{value}</span>
