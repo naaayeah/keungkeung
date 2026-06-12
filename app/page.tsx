@@ -200,7 +200,7 @@ export default function Home() {
               type="file"
               accept="image/*"
               onChange={onFileChange}
-              className="sr-only"
+              style={{ position: "absolute", width: 1, height: 1, opacity: 0, pointerEvents: "none" }}
             />
 
             {error && (
