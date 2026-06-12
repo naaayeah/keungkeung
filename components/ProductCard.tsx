@@ -50,6 +50,12 @@ export default function ProductCard({ perfume, onToggleSave, saved }: ProductCar
             </span>
             <span className="text-[11px] text-[#9A9CA8]">{perfume.priceText}</span>
           </div>
+          <div className="flex flex-wrap gap-1.5 items-center">
+            <span className="text-[11px] px-2 py-0.5 rounded-full bg-[#EEF3FF] text-[#2D6CFF] font-medium">
+              {perfume.target.gender}
+            </span>
+            <span className="text-[11px] text-[#6B6E7B]">{perfume.target.age} 추천</span>
+          </div>
         </div>
       </div>
 

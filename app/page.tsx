@@ -131,11 +131,30 @@ export default function Home() {
       <main className="max-w-lg mx-auto px-5 py-8 pb-16">
         {state === "upload" && (
           <div className="flex flex-col gap-6">
-            <div className="text-center pt-4">
+            {/* 히어로 */}
+            <div className="relative text-center pt-6 pb-2 overflow-visible">
+              {/* 떠다니는 향수병 아이콘 */}
+              <div className="flex items-end justify-center gap-5 mb-5" aria-hidden="true">
+                <BottleIcon color="#FF8FB1" size={34} delay="0s" />
+                <BottleIcon color="#A586FF" size={46} delay="0.5s" />
+                <BottleIcon color="#5AA9FF" size={34} delay="1s" />
+              </div>
               <h1 className="text-2xl font-bold text-[#17171C] mb-2">추구미로 찾는 향수</h1>
               <p className="text-sm text-[#6B6E7B]">
                 내 추구미 이미지를 올리면 AI가 딱 맞는 향수를 골라드려요
               </p>
+              {/* 무드 키워드 칩 */}
+              <div className="flex flex-wrap justify-center gap-1.5 mt-4">
+                {["청순한", "미니멀", "바닷가", "빈티지", "도시적인", "몽환적인"].map((kw, i) => (
+                  <span
+                    key={kw}
+                    className="text-[11px] px-2.5 py-1 rounded-full bg-white border border-[#ECEDF1] text-[#6B6E7B] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#A586FF] hover:text-[#A586FF] cursor-default animate-[fadeUp_0.5s_ease_both]"
+                    style={{ animationDelay: `${0.1 + i * 0.08}s` }}
+                  >
+                    #{kw}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* 드롭존 */}
@@ -225,15 +244,35 @@ export default function Home() {
             {images.length > 0 && (
               <button
                 onClick={analyze}
-                className="w-full py-4 rounded-2xl text-white font-semibold text-base tracking-wide transition-opacity hover:opacity-90"
-                style={{ background: "#2D6CFF" }}
+                className="w-full py-4 rounded-2xl text-white font-semibold text-base tracking-wide transition-all hover:opacity-90 active:scale-[0.98] animate-[shimmer_6s_ease_infinite]"
+                style={{ background: "linear-gradient(120deg, #2D6CFF, #A586FF, #2D6CFF)", backgroundSize: "200% 200%" }}
               >
                 향수 추천 받기
               </button>
             )}
 
+            {/* 사용 방법 3단계 */}
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { step: "01", title: "이미지 업로드", desc: "추구미를 담은 사진을 올려요", icon: <UploadIcon /> },
+                { step: "02", title: "AI 무드 분석", desc: "분위기·컬러·감성을 읽어요", icon: <SparkleIcon /> },
+                { step: "03", title: "향수 추천", desc: "딱 맞는 향수를 골라드려요", icon: <DropIcon /> },
+              ].map((s, i) => (
+                <div
+                  key={s.step}
+                  className="bg-white rounded-2xl border border-[#ECEDF1] p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-md animate-[fadeUp_0.5s_ease_both]"
+                  style={{ animationDelay: `${0.2 + i * 0.1}s` }}
+                >
+                  <div className="flex justify-center mb-2 text-[#A586FF]">{s.icon}</div>
+                  <p className="text-[9px] tracking-[0.2em] text-[#9A9CA8] mb-1">{s.step}</p>
+                  <p className="text-xs font-semibold text-[#17171C] mb-1">{s.title}</p>
+                  <p className="text-[10px] text-[#9A9CA8] leading-snug">{s.desc}</p>
+                </div>
+              ))}
+            </div>
+
             <p className="text-[11px] text-[#9A9CA8] text-center leading-relaxed">
-              AI가 이미지를 해석해 큐레이션 목록에서 고른 추천이며, 실제 향은 다르게 느껴질 수 있습니다.
+              AI가 이미지를 해석해 큐레이션 목록에서 고른 추천이며, 실제 향은 다르게 느껴질 수 있어요.
             </p>
           </div>
         )}
@@ -247,5 +286,48 @@ export default function Home() {
         )}
       </main>
     </div>
+  );
+}
+
+function BottleIcon({ color, size, delay }: { color: string; size: number; delay: string }) {
+  return (
+    <svg
+      width={size} height={size * 1.4} viewBox="0 0 40 56" fill="none"
+      style={{ animation: `floaty 3.2s ease-in-out ${delay} infinite` }}
+    >
+      <rect x="15" y="2" width="10" height="8" rx="2" fill={color} opacity="0.5" />
+      <rect x="13" y="9" width="14" height="4" rx="1.5" fill={color} opacity="0.7" />
+      <rect x="6" y="14" width="28" height="38" rx="9" fill={color} opacity="0.18" />
+      <rect x="6" y="14" width="28" height="38" rx="9" stroke={color} strokeWidth="2" opacity="0.6" />
+      <rect x="11" y="28" width="18" height="19" rx="6" fill={color} opacity="0.45" />
+    </svg>
+  );
+}
+
+function UploadIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="4" />
+      <circle cx="9" cy="9" r="2" />
+      <path d="M21 15l-4.5-4.5L7 20" />
+    </svg>
+  );
+}
+
+function SparkleIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z" />
+      <path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z" />
+    </svg>
+  );
+}
+
+function DropIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3s6.5 7 6.5 12a6.5 6.5 0 1 1-13 0C5.5 10 12 3 12 3z" />
+      <path d="M9.5 14.5a3 3 0 0 0 3 3" />
+    </svg>
   );
 }
