@@ -34,13 +34,16 @@ const MOOD_PALETTE: { keywords: string[]; color: string }[] = [
 ];
 
 function getMoodColor(data: ResultData): string {
-  const haystack = [
-    ...data.families.map((f) => f.name),
-    ...data.moodKeywords,
-    ...data.picks.map((p) => p.family),
-  ].join(" ");
-  for (const { keywords, color } of MOOD_PALETTE) {
-    if (keywords.some((k) => haystack.includes(k))) return color;
+  // moodKeywords → families → picks 순으로 우선순위 적용
+  const sources = [
+    data.moodKeywords.join(" "),
+    data.families.map((f) => f.name).join(" "),
+    data.picks.map((p) => p.family).join(" "),
+  ];
+  for (const haystack of sources) {
+    for (const { keywords, color } of MOOD_PALETTE) {
+      if (keywords.some((k) => haystack.includes(k))) return color;
+    }
   }
   return "#5C5C5C";
 }
