@@ -383,7 +383,6 @@ export const PERFUMES: Perfume[] = [
     desc: "싱그러운 라임과 향긋한 바질이 어우러진 조말론의 시그니처예요. 성별·계절 불문 가장 사랑받는 입문 향수 중 하나예요.",
     review: "\"조말론 하면 역시 라임바질\" 이라는 말이 있을 만큼 상징적인 향이에요. \"처음 맡았을 때 바로 구매했다\", \"뿌리면 기분이 좋아진다\"는 후기가 넘쳐요. 남녀 모두 부담 없이 즐길 수 있어요.",
     target: { gender: "남녀 공용", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.3.jpg",
     channels: [{ name: "Jo Malone 공식몰", url: "https://www.jomalone.co.kr/product/lime-basil-mandarin-cologne", affiliate: false }],
   },
   {
@@ -398,7 +397,6 @@ export const PERFUMES: Perfume[] = [
     desc: "바닷바람과 해안 절벽의 세이지가 만나는 향이에요. 조말론 컬렉션 중 가장 자연적이고 미니멀한 향으로 꼽혀요.",
     review: "\"바다 냄새가 이렇게 향수로 나올 수 있구나\" 싶은 향이에요. \"뿌리면 바다에 있는 기분\", \"여름 여행 갈 때 꼭 챙긴다\"는 후기가 많아요. 젠더리스 향으로 커플이 함께 쓰는 경우도 많아요.",
     target: { gender: "남녀 공용", age: "20대 중반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.32831.jpg",
     channels: [{ name: "Jo Malone 공식몰", url: "https://www.jomalone.co.kr/product/wood-sage-sea-salt-cologne", affiliate: false }],
   },
   {
@@ -413,7 +411,6 @@ export const PERFUMES: Perfume[] = [
     desc: "갓 따온 영국 배의 촉촉한 달콤함과 프리지아의 꽃향기가 조화롭게 어우러진 가을 향수예요.",
     review: "가을 향수 추천 리스트에서 빠지지 않는 향이에요. \"배향이 이렇게 고급스럽게 느껴질 줄 몰랐다\", \"프리지아가 너무 예쁘다\"는 평이 많아요. 가을 소풍이나 데이트에 어울려요.",
     target: { gender: "여성", age: "20대~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.16903.jpg",
     channels: [{ name: "Jo Malone 공식몰", url: "https://www.jomalone.co.kr/product/english-pear-freesia-cologne", affiliate: false }],
   },
   {
@@ -428,7 +425,6 @@ export const PERFUMES: Perfume[] = [
     desc: "블랙베리의 상큼한 산미와 베이 리프의 허브향이 인상적인 영국 정원 향수예요. 자연스럽고 군더더기 없는 향이에요.",
     review: "\"향수 매니아들의 숨겨진 픽\"으로 자주 언급돼요. \"산딸기향 좋아하면 무조건 추천\", \"블랙베리가 이렇게 자연스럽게 나다니\"라는 반응이 많아요.",
     target: { gender: "남녀 공용", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.16908.jpg",
     channels: [{ name: "Jo Malone 공식몰", url: "https://www.jomalone.co.kr/product/blackberry-bay-cologne", affiliate: false }],
   },
   {
@@ -443,7 +439,6 @@ export const PERFUMES: Perfume[] = [
     desc: "따뜻하고 달콤한 통카빈과 미르가 만들어내는 포근하고 고급스러운 향이에요. 겨울밤에 어울리는 조말론의 인텐스 컬렉션이에요.",
     review: "겨울 향수 베스트셀러예요. \"이불 속에 있는 느낌\", \"달콤하지만 유치하지 않다\"는 평이 많아요. 저녁 약속이나 특별한 날에 어울려요.",
     target: { gender: "여성", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.38552.jpg",
     channels: [{ name: "Jo Malone 공식몰", url: "https://www.jomalone.co.kr/product/myrrh-tonka-cologne-intense", affiliate: false }],
   },
   {
@@ -458,7 +453,6 @@ export const PERFUMES: Perfume[] = [
     desc: "벨벳처럼 부드러운 로즈와 깊고 신비로운 우드가 만나는 향이에요. 조말론 인텐스 중에서도 가장 관능적이고 우아한 향으로 꼽혀요.",
     review: "\"로즈향 좋아하면 최고의 선택\", \"뿌리면 바로 시선을 끌게 된다\"는 평이 많아요. 특별한 저녁 자리에 어울리는 클래식이에요.",
     target: { gender: "여성", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.26527.jpg",
     channels: [{ name: "Jo Malone 공식몰", url: "https://www.jomalone.co.kr/product/velvet-rose-oud-cologne-intense", affiliate: false }],
   },
   {
@@ -473,7 +467,6 @@ export const PERFUMES: Perfume[] = [
     desc: "석류의 붉고 새콤달콤한 향과 우디 베이스가 만드는 독특한 신비로움이 있어요. 조말론 중에서도 개성이 강한 향이에요.",
     review: "\"처음엔 어색했는데 중독됐다\", \"남들이 안 쓸 것 같아서 좋다\"는 후기가 많아요. 개성을 원하는 분들께 자주 추천돼요.",
     target: { gender: "남녀 공용", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.3218.jpg",
     channels: [{ name: "Jo Malone 공식몰", url: "https://www.jomalone.co.kr/product/pomegranate-noir-cologne", affiliate: false }],
   },
   {
@@ -488,7 +481,6 @@ export const PERFUMES: Perfume[] = [
     desc: "복숭아꽃과 꿀의 달콤함이 봄빛처럼 화사하게 퍼지는 향이에요. 사랑스럽고 밝은 향을 원한다면 딱 맞아요.",
     review: "\"데이트 향수로 완벽\", \"꿀향이 너무 예쁘다\"는 후기가 많아요. 20대 초반에 특히 인기 있어요.",
     target: { gender: "여성", age: "10대 후반~20대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.3219.jpg",
     channels: [{ name: "Jo Malone 공식몰", url: "https://www.jomalone.co.kr/product/nectarine-blossom-honey-cologne", affiliate: false }],
   },
   {
@@ -503,7 +495,6 @@ export const PERFUMES: Perfume[] = [
     desc: "영국 봄의 들판에서 피어나는 블루벨 꽃의 향을 담았어요. 가볍고 청순하며 자연 그대로의 느낌이에요.",
     review: "\"향수 처음 쓰는 친구한테 선물했더니 너무 좋아했다\", \"봄 되면 항상 꺼내는 향수\"라는 후기가 많아요. 봄철 베스트셀러예요.",
     target: { gender: "여성", age: "10대 후반~20대 중반" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.16907.jpg",
     channels: [{ name: "Jo Malone 공식몰", url: "https://www.jomalone.co.kr/product/wild-bluebell-cologne", affiliate: false }],
   },
   // ── 딥디크 ──────────────────────────────────────────────
@@ -519,7 +510,6 @@ export const PERFUMES: Perfume[] = [
     desc: "무화과나무 그늘 아래 앉아있는 것 같은 신선하고 자연스러운 향이에요. 딥디크에서 가장 유명한 향 중 하나예요.",
     review: "\"무화과 향수 하면 무조건 이거\", \"자연 그 자체 같다\"는 평이에요. 여름에 특히 많이 팔리는 딥디크의 대표 향수예요.",
     target: { gender: "남녀 공용", age: "20대 중반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.2611.jpg",
     channels: [{ name: "Diptyque 공식몰", url: "https://www.diptyqueparis.com/ko_kr/p/philosykos-eau-de-toilette.html", affiliate: false }],
   },
   {
@@ -534,7 +524,6 @@ export const PERFUMES: Perfume[] = [
     desc: "베트남 도선 해변의 바닷바람에 실려오는 흰 꽃향기를 담았어요. 파우더리하면서도 싱그러운 매력이 있어요.",
     review: "\"처음 맡았는데 한 번에 빠져들었다\", \"흰 원피스 입고 뿌리고 싶은 향수\"라는 후기가 많아요. 여름 플로럴 추천에서 자주 보여요.",
     target: { gender: "여성", age: "20대~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.1574.jpg",
     channels: [{ name: "Diptyque 공식몰", url: "https://www.diptyqueparis.com/ko_kr/p/do-son-eau-de-toilette.html", affiliate: false }],
   },
   {
@@ -549,7 +538,6 @@ export const PERFUMES: Perfume[] = [
     desc: "물 속 장미처럼 수분감 가득하고 촉촉한 그린 플로럴이에요. 블랙커런트 잎의 날카로운 그린감이 로즈와 절묘하게 어울려요.",
     review: "\"뿌리면 촉촉한 느낌이 든다\", \"로즈향인데 무겁지 않다\"는 평이 많아요. 딥디크 입문으로 자주 추천돼요.",
     target: { gender: "여성", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.1577.jpg",
     channels: [{ name: "Diptyque 공식몰", url: "https://www.diptyqueparis.com/ko_kr/p/lombre-dans-leau-eau-de-toilette.html", affiliate: false }],
   },
   {
@@ -564,7 +552,6 @@ export const PERFUMES: Perfume[] = [
     desc: "후추의 스파이시함과 바닐라의 달콤함이 긴장감 있게 대비되는 향이에요. 딥디크에서 가장 독특하고 중독성 있는 향 중 하나예요.",
     review: "\"달콤하면서 강렬하다\", \"뿌릴 때마다 칭찬받는다\"는 후기가 많아요. 겨울 파티나 저녁 자리에 잘 어울려요.",
     target: { gender: "남녀 공용", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.22025.jpg",
     channels: [{ name: "Diptyque 공식몰", url: "https://www.diptyqueparis.com/ko_kr/p/eau-duelle-eau-de-parfum.html", affiliate: false }],
   },
   {
@@ -579,7 +566,6 @@ export const PERFUMES: Perfume[] = [
     desc: "피부에서 직접 나는 것 같은 따뜻하고 파우더리한 머스크 플로럴이에요. 이름처럼 꽃과 피부 사이 어딘가의 향이에요.",
     review: "\"내 피부에서 나는 향 같다\", \"뿌리면 안아주고 싶어진다는 소리를 들었다\"는 후기가 대표적이에요. 데이트나 특별한 날 딱이에요.",
     target: { gender: "여성", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.52946.jpg",
     channels: [{ name: "Diptyque 공식몰", url: "https://www.diptyqueparis.com/ko_kr/p/fleur-de-peau-eau-de-parfum.html", affiliate: false }],
   },
   {
@@ -594,7 +580,6 @@ export const PERFUMES: Perfume[] = [
     desc: "로즈워터처럼 싱그럽고 촉촉한 장미향이에요. 무겁지 않고 가볍게 뿌릴 수 있는 로즈 향수를 원한다면 딱이에요.",
     review: "\"로즈향 중에 제일 예쁘다\", \"여름에도 부담 없이 쓸 수 있는 로즈\"라는 평이 많아요. 선물용으로도 인기가 높아요.",
     target: { gender: "여성", age: "20대~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.51186.jpg",
     channels: [{ name: "Diptyque 공식몰", url: "https://www.diptyqueparis.com/ko_kr/p/eau-rose-eau-de-toilette.html", affiliate: false }],
   },
   {
@@ -609,7 +594,6 @@ export const PERFUMES: Perfume[] = [
     desc: "딥디크 캔들로 먼저 유명해진 향이에요. 블랙커런트와 장미의 달콤하고 우아한 조합이 향수로도 인기예요.",
     review: "\"딥디크 캔들 좋아하면 무조건 맡아봐야 한다\", \"향이 너무 예뻐서 뿌리기 아깝다\"는 후기가 많아요.",
     target: { gender: "여성", age: "20대~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.1573.jpg",
     channels: [{ name: "Diptyque 공식몰", url: "https://www.diptyqueparis.com/ko_kr/p/baies-eau-de-toilette.html", affiliate: false }],
   },
   {
@@ -624,7 +608,6 @@ export const PERFUMES: Perfume[] = [
     desc: "벳티버 특유의 흙내음과 스모키함을 세련되게 표현한 향이에요. 딥디크의 유니섹스 클래식으로 꾸준히 사랑받아요.",
     review: "\"우디 향수 중 가장 자연스럽다\", \"나무 그 자체 같은 향\"이라는 평이 있어요. 벳티버 입문향으로 추천돼요.",
     target: { gender: "남녀 공용", age: "20대 후반~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.1576.jpg",
     channels: [{ name: "Diptyque 공식몰", url: "https://www.diptyqueparis.com/ko_kr/p/vetyverio-eau-de-toilette.html", affiliate: false }],
   },
   {
@@ -639,7 +622,6 @@ export const PERFUMES: Perfume[] = [
     desc: "흰 꽃들의 향연이에요. 재스민과 미모사가 가볍고 투명하게 퍼지는 봄의 화이트 플로럴이에요.",
     review: "\"봄 되면 생각나는 향\", \"너무 가볍지도 무겁지도 않다\"는 후기가 많아요. 데일리로 가볍게 쓰기 좋아요.",
     target: { gender: "여성", age: "20대~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.1580.jpg",
     channels: [{ name: "Diptyque 공식몰", url: "https://www.diptyqueparis.com/ko_kr/p/olene-eau-de-toilette.html", affiliate: false }],
   },
   // ── 르 라보 ──────────────────────────────────────────────
@@ -655,7 +637,6 @@ export const PERFUMES: Perfume[] = [
     desc: "피부 위에 얹히는 듯한 극도로 미니멀한 머스크 향이에요. 향인 듯 아닌 듯 묘하게 중독적인 향으로 르 라보의 베스트셀러예요.",
     review: "\"내 피부 냄새 같다\", \"향인지 모르겠는데 계속 맡게 된다\"는 후기가 대표적이에요. 향수 고수들이 가장 많이 고르는 향 중 하나예요.",
     target: { gender: "남녀 공용", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.17979.jpg",
     channels: [{ name: "Le Labo 공식몰", url: "https://www.lelabofragrances.com/another-13.html", affiliate: false }],
   },
   {
@@ -670,7 +651,6 @@ export const PERFUMES: Perfume[] = [
     desc: "장미를 중심으로 우디와 스파이시가 어우러진 유니섹스 로즈 향이에요. 흔히 생각하는 달콤한 로즈와는 다르게 건조하고 복잡한 매력이 있어요.",
     review: "\"로즈 향수 중 가장 남다르다\", \"처음엔 낯선데 계속 맡고 싶어진다\"는 평이 많아요. 개성있는 로즈를 원한다면 추천해요.",
     target: { gender: "남녀 공용", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.5441.jpg",
     channels: [{ name: "Le Labo 공식몰", url: "https://www.lelabofragrances.com/rose-31.html", affiliate: false }],
   },
   {
@@ -685,7 +665,6 @@ export const PERFUMES: Perfume[] = [
     desc: "블랙 티의 연기와 무화과나무의 어두운 그린이 만나는 도시적이고 성숙한 향이에요. 복잡하지만 섬세한 매력이 있어요.",
     review: "\"향수 매니아들의 숨겨진 보물\", \"어른의 향 같다\"는 평이 많아요. 격식 있는 자리나 저녁에 특히 잘 어울려요.",
     target: { gender: "남녀 공용", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.17980.jpg",
     channels: [{ name: "Le Labo 공식몰", url: "https://www.lelabofragrances.com/noir-29.html", affiliate: false }],
   },
   {
@@ -700,7 +679,6 @@ export const PERFUMES: Perfume[] = [
     desc: "베르가못의 상큼하고 산뜻한 향이 세련되게 무게감을 잡아주는 시트러스 향이에요. 가볍고 고급스러운 시트러스를 원한다면 딱이에요.",
     review: "\"시트러스 향수 중 제일 세련됐다\", \"오래 맡아도 질리지 않는다\"는 평이 많아요. 여름 사무실 향수로 인기예요.",
     target: { gender: "남녀 공용", age: "20대 중반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.5444.jpg",
     channels: [{ name: "Le Labo 공식몰", url: "https://www.lelabofragrances.com/bergamote-22.html", affiliate: false }],
   },
   {
@@ -715,7 +693,6 @@ export const PERFUMES: Perfume[] = [
     desc: "강렬한 일랑일랑을 중심으로 관능적이고 이국적인 분위기를 자아내는 향이에요. 르 라보 중에서도 가장 화려한 향이에요.",
     review: "\"한 번 맡으면 기억에 남는 향\", \"특별한 날 뿌리기 좋다\"는 후기가 있어요. 개성있고 강렬한 향수를 원한다면 추천해요.",
     target: { gender: "여성", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.17982.jpg",
     channels: [{ name: "Le Labo 공식몰", url: "https://www.lelabofragrances.com/ylang-49.html", affiliate: false }],
   },
   // ── 바이레도 ──────────────────────────────────────────────
@@ -731,7 +708,6 @@ export const PERFUMES: Perfume[] = [
     desc: "집시들의 자유로운 방랑을 담은 향이에요. 파인 우드와 인센스가 어우러진 바이레도의 대표 향으로 자유롭고 개성 있어요.",
     review: "\"처음 맡았을 때 바로 구매했다\", \"뿌리면 어딘가 떠나고 싶어진다\"는 후기가 많아요. 바이레도 입문향으로 자주 추천돼요.",
     target: { gender: "남녀 공용", age: "20대 중반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.16706.jpg",
     channels: [{ name: "Byredo 공식몰", url: "https://www.byredo.com/kr_ko/gypsy-water-eau-de-parfum", affiliate: false }],
   },
   {
@@ -746,7 +722,6 @@ export const PERFUMES: Perfume[] = [
     desc: "1940년대 파리 아프리카 나이트클럽에서 영감받은 향이에요. 아프리칸 꽃향과 우디가 세련되게 어우러진 복합적인 향이에요.",
     review: "\"바이레도 중 가장 우아하다\", \"맡을 때마다 어디선가 재즈가 들리는 것 같다\"는 후기가 있어요. 성숙하고 세련된 향을 원한다면 딱이에요.",
     target: { gender: "남녀 공용", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.16705.jpg",
     channels: [{ name: "Byredo 공식몰", url: "https://www.byredo.com/kr_ko/bal-dafrique-eau-de-parfum", affiliate: false }],
   },
   {
@@ -761,7 +736,6 @@ export const PERFUMES: Perfume[] = [
     desc: "오래된 책 더미와 꽃과 달콤한 과일이 섞인 도서관의 향을 담았어요. 복잡하면서도 몽환적인 바이레도의 시그니처예요.",
     review: "\"도서관 향수라는 콘셉트가 너무 맞다\", \"책이나 예술 좋아하는 사람에게 딱\"이라는 평이 많아요. 개성있는 향을 원한다면 강력 추천이에요.",
     target: { gender: "남녀 공용", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.37960.jpg",
     channels: [{ name: "Byredo 공식몰", url: "https://www.byredo.com/kr_ko/bibliotheque-eau-de-parfum", affiliate: false }],
   },
   {
@@ -776,7 +750,6 @@ export const PERFUMES: Perfume[] = [
     desc: "깨끗하고 순결한 흰 꽃의 향이에요. 피부에 스며드는 클린한 머스크와 로즈가 조화로운 바이레도의 베스트셀러예요.",
     review: "\"목욕 후 나는 깨끗한 향 같다\", \"세상에서 가장 예쁜 향수\"라는 과찬을 받는 향이에요. 데일리로 가볍게 쓰기 좋아요.",
     target: { gender: "여성", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.16703.jpg",
     channels: [{ name: "Byredo 공식몰", url: "https://www.byredo.com/kr_ko/blanche-eau-de-parfum", affiliate: false }],
   },
   {
@@ -791,7 +764,6 @@ export const PERFUMES: Perfume[] = [
     desc: "척박한 땅에서도 피어나는 야생장미를 담은 강하고 우아한 로즈 향이에요. 진하지만 무겁지 않은 세련된 장미예요.",
     review: "\"로즈 향수 중 가장 강인하고 우아하다\", \"여자의 향수다운 향수\"라는 평이 있어요.",
     target: { gender: "여성", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.37959.jpg",
     channels: [{ name: "Byredo 공식몰", url: "https://www.byredo.com/kr_ko/rose-of-no-mans-land-eau-de-parfum", affiliate: false }],
   },
   // ── 메종 프란시스 커정 (MFK) ──────────────────────────────
@@ -807,7 +779,6 @@ export const PERFUMES: Perfume[] = [
     desc: "세상에서 가장 유명한 향수 중 하나예요. 재스민과 사프란, 앰버우드가 빚어내는 달콤하고 우아한 향은 한 번 맡으면 잊히지 않아요.",
     review: "\"향수 아무것도 모를 때도 좋다고 했다\", \"뿌리면 무조건 칭찬받는다\"는 이야기가 많아요. 전 세계 베스트셀러로 이유가 있는 향이에요.",
     target: { gender: "남녀 공용", age: "20대 중반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.62380.jpg",
     channels: [{ name: "MFK 공식몰", url: "https://www.franciskurkdjian.com/ko/fragrances/baccarat-rouge-540/baccarat-rouge-540-eau-de-parfum.html", affiliate: false }],
   },
   {
@@ -822,7 +793,6 @@ export const PERFUMES: Perfume[] = [
     desc: "그라스 로즈를 중심으로 한 순수하고 우아한 플로럴이에요. 달콤하지 않고 고급스럽게 표현된 장미의 정수예요.",
     review: "\"진짜 장미 냄새가 난다\", \"로즈 향수의 교과서\"라는 평이 있어요. 세련된 로즈 향을 원하는 분께 추천해요.",
     target: { gender: "여성", age: "20대 후반~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.35476.jpg",
     channels: [{ name: "MFK 공식몰", url: "https://www.franciskurkdjian.com/ko/fragrances/a-la-rose/a-la-rose-eau-de-parfum.html", affiliate: false }],
   },
   {
@@ -837,7 +807,6 @@ export const PERFUMES: Perfume[] = [
     desc: "세상에서 가장 깨끗한 향을 목표로 만든 MFK의 대표 향이에요. 투명하고 클린한 머스크가 마치 천사의 향 같다고 불려요.",
     review: "\"향수 안 좋아하는 사람도 좋다고 하더라\", \"깨끗한 향의 정석\"이라는 평이 많아요. 데일리로 쓰기 완벽한 향이에요.",
     target: { gender: "남녀 공용", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.7706.jpg",
     channels: [{ name: "MFK 공식몰", url: "https://www.franciskurkdjian.com/ko/fragrances/aqua-universalis/aqua-universalis-eau-de-parfum.html", affiliate: false }],
   },
   {
@@ -852,7 +821,6 @@ export const PERFUMES: Perfume[] = [
     desc: "따뜻하고 달콤한 앰버와 바닐라가 부드럽게 감싸는 골드 빛의 향이에요. BR540과 함께 MFK 투톱 중 하나예요.",
     review: "\"BR540보다 따뜻하고 개인적으로 더 좋다\", \"겨울에 딱인 향\"이라는 후기가 많아요.",
     target: { gender: "남녀 공용", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.62382.jpg",
     channels: [{ name: "MFK 공식몰", url: "https://www.franciskurkdjian.com/ko/fragrances/gentle-fluidity/gentle-fluidity-gold-eau-de-parfum.html", affiliate: false }],
   },
   {
@@ -867,7 +835,6 @@ export const PERFUMES: Perfume[] = [
     desc: "화려한 저녁을 위한 앰버 중심의 오리엔탈이에요. 달콤하지만 무게감 있고 우아한 밤을 위한 향이에요.",
     review: "\"파티나 격식 있는 저녁 자리에 완벽\", \"맡으면 무조건 뭐야 하고 물어본다\"는 후기가 있어요.",
     target: { gender: "남녀 공용", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.62383.jpg",
     channels: [{ name: "MFK 공식몰", url: "https://www.franciskurkdjian.com/ko/fragrances/grand-soir/grand-soir-eau-de-parfum.html", affiliate: false }],
   },
   // ── 프레데릭 말 ──────────────────────────────────────────
@@ -883,7 +850,6 @@ export const PERFUMES: Perfume[] = [
     desc: "강렬하고 관능적인 터키시 로즈와 패출리가 만드는 성숙하고 카리스마 있는 향이에요. 향수 역사상 가장 위대한 여성 향수 중 하나로 꼽혀요.",
     review: "\"처음 맡았을 때 이게 진짜 향수구나 싶었다\", \"뿌리는 순간 다른 사람이 되는 느낌\"이라는 후기가 많아요. 향수를 진지하게 좋아하는 분들의 최애예요.",
     target: { gender: "여성", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.10741.jpg",
     channels: [{ name: "Frédéric Malle 공식몰", url: "https://www.fredericmalle.com/fragrances/portrait-of-a-lady", affiliate: false }],
   },
   {
@@ -898,7 +864,6 @@ export const PERFUMES: Perfume[] = [
     desc: "관능적이고 동물적인 머스크와 달콤한 스파이스가 어우러진 프레데릭 말의 대표 향이에요. 뿌리면 존재감이 달라질 만큼 강렬해요.",
     review: "\"향수 좋아하는 남자가 추천해줘서 구매했는데 반했다\", \"중독성이 미쳤다\"는 후기가 많아요. 파격적이고 강렬한 향을 원한다면 이 향수예요.",
     target: { gender: "남녀 공용", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.1286.jpg",
     channels: [{ name: "Frédéric Malle 공식몰", url: "https://www.fredericmalle.com/fragrances/musc-ravageur", affiliate: false }],
   },
   {
@@ -913,7 +878,6 @@ export const PERFUMES: Perfume[] = [
     desc: "투베로즈의 관능적이고 크리미한 아름다움을 극한까지 표현한 향이에요. 향수 역사상 가장 뛰어난 투베로즈 향수로 불려요.",
     review: "\"투베로즈 향수의 끝판왕\", \"뿌리면 주변이 조용해지는 향\"이라는 평이 있어요. 강렬한 플로럴을 원한다면 최고의 선택이에요.",
     target: { gender: "여성", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.1285.jpg",
     channels: [{ name: "Frédéric Malle 공식몰", url: "https://www.fredericmalle.com/fragrances/carnal-flower", affiliate: false }],
   },
   {
@@ -928,7 +892,6 @@ export const PERFUMES: Perfume[] = [
     desc: "봄비 내리는 라일락 정원을 스쳐 지나가는 순간을 담은 향이에요. 촉촉하고 투명한 봄의 공기 같아요.",
     review: "\"봄 향수 중 제일 시적인 향\", \"라일락이 이렇게 자연스럽게 나올 수 있구나\"라는 평이 있어요.",
     target: { gender: "여성", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.1288.jpg",
     channels: [{ name: "Frédéric Malle 공식몰", url: "https://www.fredericmalle.com/fragrances/en-passant", affiliate: false }],
   },
   // ── 로에베 ──────────────────────────────────────────────
@@ -944,7 +907,6 @@ export const PERFUMES: Perfume[] = [
     desc: "로에베의 미니멀리즘을 담은 클린 플로럴이에요. 피부에 스며드는 듯한 포근하고 자연스러운 향이 현대 여성의 감각과 잘 맞아요.",
     review: "\"향수 비입문자에게 추천\", \"뿌리면 왠지 세련돼 보인다\"는 후기가 있어요. 패션 브랜드 향수 중 완성도가 높다는 평이에요.",
     target: { gender: "여성", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.47561.jpg",
     channels: [{ name: "Loewe 공식몰", url: "https://www.loewe.com/kor/ko/perfumes/", affiliate: false }],
   },
   {
@@ -959,7 +921,6 @@ export const PERFUMES: Perfume[] = [
     desc: "공기처럼 가볍고 산뜻한 로에베의 클래식이에요. 시트러스와 화이트 플로럴이 가볍게 어우러진 입문하기 좋은 향이에요.",
     review: "\"로에베 입문향으로 딱\", \"가볍고 깔끔해서 매일 쓰기 좋다\"는 후기가 많아요. 학생부터 직장인까지 두루 쓸 수 있어요.",
     target: { gender: "여성", age: "10대 후반~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.2035.jpg",
     channels: [{ name: "Loewe 공식몰", url: "https://www.loewe.com/kor/ko/perfumes/", affiliate: false }],
   },
   {
@@ -974,7 +935,6 @@ export const PERFUMES: Perfume[] = [
     desc: "이비자 섬의 자유롭고 생기 넘치는 에너지를 담은 향이에요. 화이트 플로럴과 따뜻한 우드가 여름 바람처럼 조화로워요.",
     review: "\"이비자 여행 때 뿌리고 싶은 향\", \"여름 데이트 향수로 완벽\"이라는 후기가 있어요.",
     target: { gender: "여성", age: "20대~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.61234.jpg",
     channels: [{ name: "Loewe 공식몰", url: "https://www.loewe.com/kor/ko/perfumes/", affiliate: false }],
   },
   {
@@ -989,7 +949,6 @@ export const PERFUMES: Perfume[] = [
     desc: "로에베를 대표하는 남성 향이에요. 깔끔하고 우아한 라벤더와 우디 베이스가 조화로운 현대적인 남성 향이에요.",
     review: "\"남자 향수 입문으로 최고\", \"질리지 않는 깔끔한 향\"이라는 평이 많아요. 오래된 클래식이지만 여전히 사랑받아요.",
     target: { gender: "남성", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.2036.jpg",
     channels: [{ name: "Loewe 공식몰", url: "https://www.loewe.com/kor/ko/perfumes/", affiliate: false }],
   },
   // ── 메종 마르지엘라 레플리카 ────────────────────────────────
@@ -1005,7 +964,6 @@ export const PERFUMES: Perfume[] = [
     desc: "따뜻한 벽난로 앞에서 보내는 겨울 저녁을 담았어요. 따뜻한 나무 장작 냄새와 달콤한 밤 향이 포근하게 감싸요.",
     review: "겨울 향수 추천 1위에 자주 올라요. \"이불 안에 있는 느낌\", \"크리스마스 향수로 완벽\"이라는 후기가 많아요.",
     target: { gender: "남녀 공용", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.37011.jpg",
     channels: [{ name: "무신사", url: "https://www.musinsa.com/search/musinsa/goods?q=replica+fireplace", affiliate: false }],
   },
   {
@@ -1020,7 +978,6 @@ export const PERFUMES: Perfume[] = [
     desc: "1940년대 재즈 바의 연기와 위스키, 가죽 소파의 향을 담았어요. 성숙하고 복잡하지만 매력적인 향이에요.",
     review: "\"재즈 좋아하는 남자에게 완벽한 향수\", \"처음엔 어색했는데 중독됐다\"는 후기가 있어요. 가을·겨울 저녁에 딱이에요.",
     target: { gender: "남녀 공용", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.37012.jpg",
     channels: [{ name: "무신사", url: "https://www.musinsa.com/search/musinsa/goods?q=replica+jazz+club", affiliate: false }],
   },
   {
@@ -1035,7 +992,6 @@ export const PERFUMES: Perfume[] = [
     desc: "이른 아침 꽃 시장의 싱그럽고 촉촉한 공기를 담은 향이에요. 다양한 봄꽃이 자연스럽게 어우러진 향이에요.",
     review: "\"봄에 무조건 꺼내는 향\", \"꽃 시장 지나갈 때 나는 향이랑 똑같다\"는 후기가 많아요.",
     target: { gender: "여성", age: "20대~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.47855.jpg",
     channels: [{ name: "무신사", url: "https://www.musinsa.com/search/musinsa/goods?q=replica+flower+market", affiliate: false }],
   },
   {
@@ -1050,7 +1006,6 @@ export const PERFUMES: Perfume[] = [
     desc: "지중해 레몬나무 아래에서 보내는 여름 오후를 담은 향이에요. 싱그럽고 산뜻한 레몬의 향이 시원하게 퍼져요.",
     review: "\"여름 향수로 완벽\", \"뿌리면 여행 가고 싶어진다\"는 후기가 있어요. 더운 날 특히 잘 어울려요.",
     target: { gender: "남녀 공용", age: "20대~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.47857.jpg",
     channels: [{ name: "무신사", url: "https://www.musinsa.com/search/musinsa/goods?q=replica+lemon+trees", affiliate: false }],
   },
   {
@@ -1065,7 +1020,6 @@ export const PERFUMES: Perfume[] = [
     desc: "따뜻한 커피 한 잔과 함께하는 여유로운 휴식을 담았어요. 커피와 우유의 달콤하고 포근한 향이 아늑한 카페를 연상시켜요.",
     review: "\"커피 향수 중 제일 자연스럽다\", \"카페에 있는 느낌\"이라는 후기가 많아요. 커피 좋아하는 분께 강력 추천이에요.",
     target: { gender: "남녀 공용", age: "20대~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.55614.jpg",
     channels: [{ name: "무신사", url: "https://www.musinsa.com/search/musinsa/goods?q=replica+coffee+break", affiliate: false }],
   },
   {
@@ -1080,7 +1034,6 @@ export const PERFUMES: Perfume[] = [
     desc: "봄 공원 산책길의 풍경을 향으로 담았어요. 사과꽃과 라일락이 바람에 날리는 듯 가볍고 청순해요.",
     review: "\"봄에 딱 맞는 향\", \"산책하고 싶어지는 향수\"라는 후기가 있어요. 봄철 베스트셀러예요.",
     target: { gender: "여성", age: "10대 후반~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.47856.jpg",
     channels: [{ name: "무신사", url: "https://www.musinsa.com/search/musinsa/goods?q=replica+springtime+park", affiliate: false }],
   },
   // ── BDK ──────────────────────────────────────────────────
@@ -1096,7 +1049,6 @@ export const PERFUMES: Perfume[] = [
     desc: "잿빛 우드와 투베로즈의 대비가 세련되고 현대적인 BDK의 시그니처예요. 복잡하지만 완성도 높은 향이에요.",
     review: "\"BDK 하면 이거\", \"한 번 맡으면 잊을 수 없다\"는 후기가 많아요. 향수 매니아들 사이에서 인정받는 향이에요.",
     target: { gender: "남녀 공용", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.51773.jpg",
     channels: [{ name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=BDK+gris+charnel", affiliate: false }],
   },
   {
@@ -1111,7 +1063,6 @@ export const PERFUMES: Perfume[] = [
     desc: "투베로즈를 중심으로 한 강렬하고 우아한 플로럴이에요. 여왕 같은 존재감을 가진 향이에요.",
     review: "\"투베로즈 향수 중 가장 세련됐다\", \"뿌리면 주인공 같아진다\"는 후기가 있어요.",
     target: { gender: "여성", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.51774.jpg",
     channels: [{ name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=BDK+tuberose", affiliate: false }],
   },
   {
@@ -1126,7 +1077,6 @@ export const PERFUMES: Perfume[] = [
     desc: "부드러운 크림 같은 가죽과 파우더리한 아이리스가 고급스럽게 어우러진 향이에요. 가죽 특유의 날카로움 없이 부드러워요.",
     review: "\"가죽 향수 입문에 딱\", \"고급스러운 느낌이 난다\"는 후기가 많아요.",
     target: { gender: "남녀 공용", age: "20대 후반~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.51775.jpg",
     channels: [{ name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=BDK+creme+cuir", affiliate: false }],
   },
   {
@@ -1141,7 +1091,6 @@ export const PERFUMES: Perfume[] = [
     desc: "붉은 로즈와 스모키한 가죽이 만드는 유혹적이고 관능적인 향이에요. 자신감 있는 밤 외출에 어울려요.",
     review: "\"힘 있는 향을 원한다면 이거\", \"뿌리면 자신감이 생긴다\"는 후기가 있어요.",
     target: { gender: "여성", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.51776.jpg",
     channels: [{ name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=BDK+rouge+smoking", affiliate: false }],
   },
   // ── 톰 포드 ──────────────────────────────────────────────
@@ -1157,7 +1106,6 @@ export const PERFUMES: Perfume[] = [
     desc: "풍부한 바닐라와 담배꽃, 달콤한 스파이스가 만드는 따뜻하고 관능적인 향이에요. 톰 포드 프라이빗 블렌드 중 가장 인기 있는 향이에요.",
     review: "\"겨울 명품 향수 1순위\", \"달콤하지만 촌스럽지 않다\"는 후기가 많아요. 겨울 선물로도 자주 사용돼요.",
     target: { gender: "남녀 공용", age: "20대 후반~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.2750.jpg",
     channels: [{ name: "Tom Ford 공식몰", url: "https://www.tomford.com/fragrance/", affiliate: false }],
   },
   {
@@ -1172,7 +1120,6 @@ export const PERFUMES: Perfume[] = [
     desc: "아가우드의 신비롭고 깊은 향을 세련되게 표현한 향이에요. 우드 향수의 기준이 되는 톰 포드의 클래식이에요.",
     review: "\"우드 향수 하면 이게 기준\", \"가격이 아깝지 않다\"는 후기가 많아요. 성숙하고 클래식한 향을 원한다면 이 향수예요.",
     target: { gender: "남녀 공용", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.2748.jpg",
     channels: [{ name: "Tom Ford 공식몰", url: "https://www.tomford.com/fragrance/", affiliate: false }],
   },
   {
@@ -1187,7 +1134,6 @@ export const PERFUMES: Perfume[] = [
     desc: "블랙체리와 달콤한 로즈가 관능적으로 어우러진 체리 향수예요. 달콤하지만 성숙하고 중독적인 매력이 있어요.",
     review: "\"체리 향수 중 단연 최고\", \"달콤한데 유치하지 않다\"는 후기가 대표적이에요. 특별한 날 뿌리기 좋아요.",
     target: { gender: "여성", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.60832.jpg",
     channels: [{ name: "Tom Ford 공식몰", url: "https://www.tomford.com/fragrance/", affiliate: false }],
   },
   {
@@ -1202,7 +1148,6 @@ export const PERFUMES: Perfume[] = [
     desc: "지중해 리비에라 해변을 연상시키는 상쾌하고 럭셔리한 네롤리 향이에요. 가장 세련된 여름 시트러스예요.",
     review: "\"여름 럭셔리 향수로 완벽\", \"리조트에서 뿌리고 싶은 향\"이라는 후기가 있어요.",
     target: { gender: "남녀 공용", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.14578.jpg",
     channels: [{ name: "Tom Ford 공식몰", url: "https://www.tomford.com/fragrance/", affiliate: false }],
   },
   {
@@ -1217,7 +1162,6 @@ export const PERFUMES: Perfume[] = [
     desc: "세상에서 가장 아름답고 위험한 장미를 담은 향이에요. 강렬하고 풍성한 로즈에 스파이시한 날카로움이 더해져요.",
     review: "\"로즈 향수의 끝\", \"너무 예뻐서 뿌리기 아깝다\"는 과찬을 받는 향이에요.",
     target: { gender: "여성", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.69527.jpg",
     channels: [{ name: "Tom Ford 공식몰", url: "https://www.tomford.com/fragrance/", affiliate: false }],
   },
   {
@@ -1232,7 +1176,6 @@ export const PERFUMES: Perfume[] = [
     desc: "부드러운 가죽과 플로럴이 깔끔하게 어우러진 현대적인 가죽 향이에요. 톰 포드 중 가장 접근하기 쉬운 가죽 향으로 꼽혀요.",
     review: "\"가죽 향 입문으로 딱\", \"세련됐고 지속력도 좋다\"는 후기가 많아요. 남녀 모두에게 잘 어울려요.",
     target: { gender: "남녀 공용", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.52753.jpg",
     channels: [{ name: "Tom Ford 공식몰", url: "https://www.tomford.com/fragrance/", affiliate: false }],
   },
   // ── 퍼퓸드 말리 ──────────────────────────────────────────
@@ -1248,7 +1191,6 @@ export const PERFUMES: Perfume[] = [
     desc: "라즈베리와 로즈의 달콤하고 우아한 조합이 캐시미어처럼 포근한 베이스 위에 올라앉은 여성스러운 향이에요. 퍼퓸드말리의 전 세계 베스트셀러예요.",
     review: "\"여자 향수의 정석\", \"뿌리면 무조건 칭찬받는다\"는 후기가 넘쳐요. 선물로도 가장 인기 있는 향수 중 하나예요.",
     target: { gender: "여성", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.48168.jpg",
     channels: [{ name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=parfums+de+marly+delina", affiliate: false }],
   },
   {
@@ -1263,7 +1205,6 @@ export const PERFUMES: Perfume[] = [
     desc: "사과의 신선함과 라벤더의 아로마틱함, 바닐라의 달콤함이 조화를 이루는 퍼퓸드말리 남성 라인 1위예요.",
     review: "\"남자 향수 중 가장 예쁜 향\", \"뿌리면 여자친구가 너무 좋아한다\"는 후기가 많아요. 젠더리스로도 인기예요.",
     target: { gender: "남성", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.48162.jpg",
     channels: [{ name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=parfums+de+marly+layton", affiliate: false }],
   },
   {
@@ -1278,7 +1219,6 @@ export const PERFUMES: Perfume[] = [
     desc: "담배꽃과 바닐라, 스파이스의 관능적이고 따뜻한 조합이에요. 겨울 럭셔리 향수를 찾는다면 이 향수예요.",
     review: "\"겨울에 뿌리기 최고\", \"존재감이 넘쳐흐른다\"는 후기가 있어요. 향수 매니아들이 극찬하는 향이에요.",
     target: { gender: "남성", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.48164.jpg",
     channels: [{ name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=parfums+de+marly+herod", affiliate: false }],
   },
   {
@@ -1293,7 +1233,6 @@ export const PERFUMES: Perfume[] = [
     desc: "아몬드와 바닐라의 달콤함에 라벤더의 아로마틱함이 더해진 세련된 구르망 향이에요. 달콤하지만 남성스러운 매력이 있어요.",
     review: "\"달콤한 남성 향수의 끝판왕\", \"선물로 드렸더니 엄청 좋아하셨다\"는 후기가 많아요.",
     target: { gender: "남성", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.48163.jpg",
     channels: [{ name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=parfums+de+marly+pegasus", affiliate: false }],
   },
   {
@@ -1308,7 +1247,6 @@ export const PERFUMES: Perfume[] = [
     desc: "블랙커런트와 로즈의 강렬한 조합이 우아하고 인상적인 향이에요. 퍼퓸드말리 중 가장 존재감 강한 향으로 꼽혀요.",
     review: "\"뿌리는 순간 룸이 바뀐다\", \"가장 인상적인 퍼퓸드말리\"라는 평이 있어요.",
     target: { gender: "남녀 공용", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.50738.jpg",
     channels: [{ name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=parfums+de+marly+carlisle", affiliate: false }],
   },
   // ── 에어린 ──────────────────────────────────────────────
@@ -1324,7 +1262,6 @@ export const PERFUMES: Perfume[] = [
     desc: "재스민을 중심으로 한 밝고 화사한 여름 플로럴이에요. 에어린의 대표 향으로 상쾌하고 여성스러운 매력이 있어요.",
     review: "\"여름 향수로 딱\", \"화사하고 기분이 좋아지는 향\"이라는 후기가 많아요.",
     target: { gender: "여성", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.60321.jpg",
     channels: [{ name: "에스티로더코리아", url: "https://www.esteelauder.co.kr", affiliate: false }],
   },
   {
@@ -1339,7 +1276,6 @@ export const PERFUMES: Perfume[] = [
     desc: "앰버와 머스크의 달콤하고 포근한 조합이에요. 피부에 스미는 듯한 부드럽고 따뜻한 향이에요.",
     review: "\"뭐 향수 쓰냐는 질문을 제일 많이 받은 향\", \"피부 향 같아서 너무 좋다\"는 후기가 많아요.",
     target: { gender: "여성", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.35893.jpg",
     channels: [{ name: "에스티로더코리아", url: "https://www.esteelauder.co.kr", affiliate: false }],
   },
   {
@@ -1354,7 +1290,6 @@ export const PERFUMES: Perfume[] = [
     desc: "그라스 지방의 최상급 로즈를 담은 순수하고 우아한 로즈 향이에요. 에어린의 시그니처 로즈로 클래식하고 품위 있어요.",
     review: "\"로즈 향수 중 가장 정통적\", \"선물로 받으면 정말 기쁠 향수\"라는 후기가 있어요.",
     target: { gender: "여성", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.48234.jpg",
     channels: [{ name: "에스티로더코리아", url: "https://www.esteelauder.co.kr", affiliate: false }],
   },
   // ── 탬버린즈 ──────────────────────────────────────────────
@@ -1413,7 +1348,6 @@ export const PERFUMES: Perfume[] = [
     desc: "단 하나의 성분, 세테아놀로만 만든 극한의 미니멀리즘 향수예요. 착용자의 체취와 결합해 세상에 하나뿐인 나만의 향을 만들어요.",
     review: "\"향수인 척 안 하는 게 가장 매력\", \"뿌렸는지 모르겠는데 칭찬받는다\"는 후기가 많아요. 피부향 팬에게 최고의 선택이에요.",
     target: { gender: "남녀 공용", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.18171.jpg",
     channels: [{ name: "세포라", url: "https://www.sephora.kr/search?keyword=juliette+has+a+gun", affiliate: false }],
   },
   {
@@ -1428,7 +1362,6 @@ export const PERFUMES: Perfume[] = [
     desc: "복수하는 여성의 강렬함과 로즈의 우아함이 만난 향이에요. 파출리의 날카로움이 매력 포인트예요.",
     review: "\"힘 있는 로즈향을 원한다면 이거\", \"뿌리면 나 자신이 강해진 느낌\"이라는 후기가 있어요.",
     target: { gender: "여성", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.4268.jpg",
     channels: [{ name: "세포라", url: "https://www.sephora.kr/search?keyword=juliette+has+a+gun", affiliate: false }],
   },
   {
@@ -1443,7 +1376,6 @@ export const PERFUMES: Perfume[] = [
     desc: "핑크 페퍼의 발랄함과 로즈의 로맨틱함, 달콤한 벤조인이 어우러진 사랑스러운 향이에요.",
     review: "\"소녀감성 느끼고 싶을 때 뿌리는 향\", \"데이트 향수로 완벽\"이라는 후기가 있어요.",
     target: { gender: "여성", age: "20대~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.17167.jpg",
     channels: [{ name: "세포라", url: "https://www.sephora.kr/search?keyword=juliette+has+a+gun", affiliate: false }],
   },
   // ── 크리드 ──────────────────────────────────────────────
@@ -1459,7 +1391,6 @@ export const PERFUMES: Perfume[] = [
     desc: "나폴레옹의 용기와 야망에서 영감받은 향이에요. 파인애플과 우디가 만나는 독보적인 조합으로 남성 럭셔리 향수의 아이콘이에요.",
     review: "\"남자 향수 중 가장 칭찬 많이 받는 향\", \"가격이 비싸도 이해되는 향수\"라는 후기가 많아요. 선물 최고가 상품으로도 인기예요.",
     target: { gender: "남성", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.38466.jpg",
     channels: [{ name: "Creed 공식몰", url: "https://www.creedperfume.com/ko", affiliate: false }],
   },
   {
@@ -1474,7 +1405,6 @@ export const PERFUMES: Perfume[] = [
     desc: "알프스 은빛 물처럼 맑고 신선한 향이에요. 그린 티와 아쿠아틱이 조화로운 크리드의 클래식 남성 향이에요.",
     review: "\"크리드 입문향으로 딱\", \"질리지 않고 매일 쓸 수 있다\"는 후기가 많아요. 계절 불문 데일리로 좋아요.",
     target: { gender: "남성", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.2179.jpg",
     channels: [{ name: "Creed 공식몰", url: "https://www.creedperfume.com/ko", affiliate: false }],
   },
   {
@@ -1489,7 +1419,6 @@ export const PERFUMES: Perfume[] = [
     desc: "아이리시 초원의 그린한 공기를 담은 크리드의 시그니처예요. 50년 넘게 사랑받는 남성 향수의 역사가 담긴 향이에요.",
     review: "\"남자 향수 클래식 중의 클래식\", \"할아버지부터 손자까지 쓸 수 있는 향\"이라는 후기가 있어요.",
     target: { gender: "남성", age: "30대~60대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.2181.jpg",
     channels: [{ name: "Creed 공식몰", url: "https://www.creedperfume.com/ko", affiliate: false }],
   },
   {
@@ -1504,7 +1433,6 @@ export const PERFUMES: Perfume[] = [
     desc: "7개 나라의 흰 꽃들을 담은 우아하고 파우더리한 향이에요. 크리드 여성 라인 중 가장 사랑받는 클래식이에요.",
     review: "\"결혼식 향수로 딱\", \"가장 우아한 향을 원한다면 이 향수\"라는 후기가 있어요.",
     target: { gender: "여성", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.2176.jpg",
     channels: [{ name: "Creed 공식몰", url: "https://www.creedperfume.com/ko", affiliate: false }],
   },
   {
@@ -1519,7 +1447,6 @@ export const PERFUMES: Perfume[] = [
     desc: "지중해 바닷가의 신선한 공기와 고급스러운 앰버그리스가 만나는 향이에요. 크리드에서 가장 고귀한 바다 향이에요.",
     review: "\"바다향 중 가장 고급스럽다\", \"여름 럭셔리 향수로 완벽\"이라는 후기가 많아요.",
     target: { gender: "남녀 공용", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.2178.jpg",
     channels: [{ name: "Creed 공식몰", url: "https://www.creedperfume.com/ko", affiliate: false }],
   },
   {
@@ -1534,7 +1461,6 @@ export const PERFUMES: Perfume[] = [
     desc: "카리브해의 열대적이고 신선한 공기를 담은 향이에요. 코코넛과 라임의 조화가 여름 휴가의 설렘을 불러와요.",
     review: "\"뿌리면 바로 여행 가고 싶어진다\", \"여름 특화 향수\"라는 후기가 많아요.",
     target: { gender: "남녀 공용", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.19490.jpg",
     channels: [{ name: "Creed 공식몰", url: "https://www.creedperfume.com/ko", affiliate: false }],
   },
   // ── 루이비통 ──────────────────────────────────────────────
@@ -1550,7 +1476,6 @@ export const PERFUMES: Perfume[] = [
     desc: "꿈을 붙잡으라는 이름처럼 몽환적이고 달콤한 플로럴이에요. 루이비통 향수 중 가장 대중적으로 인기 있는 향이에요.",
     review: "\"루이비통 향수 입문으로 딱\", \"맡는 순간 꿈꾸는 느낌\"이라는 후기가 많아요.",
     target: { gender: "여성", age: "20대~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.56012.jpg",
     channels: [{ name: "Louis Vuitton 공식몰", url: "https://kr.louisvuitton.com/kor-ko/products/fragrances", affiliate: false }],
   },
   {
@@ -1565,7 +1490,6 @@ export const PERFUMES: Perfume[] = [
     desc: "캘리포니아의 햇살 가득하고 자유로운 감성을 담은 향이에요. 살구와 재스민의 밝고 생기 있는 조합이에요.",
     review: "\"햇살이 느껴지는 향\", \"여름에 뿌리면 기분이 업된다\"는 후기가 있어요.",
     target: { gender: "여성", age: "20대~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.69261.jpg",
     channels: [{ name: "Louis Vuitton 공식몰", url: "https://kr.louisvuitton.com/kor-ko/products/fragrances", affiliate: false }],
   },
   {
@@ -1580,7 +1504,6 @@ export const PERFUMES: Perfume[] = [
     desc: "메이 로즈를 중심으로 한 관능적이고 우아한 화이트 플로럴이에요. 루이비통 향수 중 가장 세련되고 여성스러운 향이에요.",
     review: "\"LV 향수 중 가장 예쁘다\", \"특별한 날을 위한 향수\"라는 후기가 있어요.",
     target: { gender: "여성", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.56011.jpg",
     channels: [{ name: "Louis Vuitton 공식몰", url: "https://kr.louisvuitton.com/kor-ko/products/fragrances", affiliate: false }],
   },
   {
@@ -1595,7 +1518,6 @@ export const PERFUMES: Perfume[] = [
     desc: "오후의 수영 후 피부에 남는 따뜻한 햇살과 물의 향이에요. 코코넛과 아쿠아틱이 고급스럽게 어우러진 여름 향이에요.",
     review: "\"여름 럭셔리 향수로 완벽\", \"수영장 옆에서 뿌리고 싶은 향\"이라는 후기가 있어요.",
     target: { gender: "남녀 공용", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.56015.jpg",
     channels: [{ name: "Louis Vuitton 공식몰", url: "https://kr.louisvuitton.com/kor-ko/products/fragrances", affiliate: false }],
   },
   {
@@ -1610,7 +1532,6 @@ export const PERFUMES: Perfume[] = [
     desc: "세계 각지의 로즈를 블렌딩한 루이비통의 로즈 오마주예요. 파우더리하면서도 싱그러운 아름다운 장미향이에요.",
     review: "\"로즈 향 중 가장 고급스럽다\", \"LV답게 품위있는 향\"이라는 후기가 있어요.",
     target: { gender: "여성", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.56013.jpg",
     channels: [{ name: "Louis Vuitton 공식몰", url: "https://kr.louisvuitton.com/kor-ko/products/fragrances", affiliate: false }],
   },
   // ── 에르메스 ──────────────────────────────────────────────
@@ -1626,7 +1547,6 @@ export const PERFUMES: Perfume[] = [
     desc: "에르메스 실크 스카프에서 영감받은 젊고 발랄한 플로럴이에요. 투베로즈의 달콤함과 생강의 스파이시함이 독특하게 어우러져요.",
     review: "\"에르메스 향수 입문에 딱\", \"젊고 현대적인 에르메스 느낌\"이라는 후기가 많아요.",
     target: { gender: "여성", age: "20대~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.52181.jpg",
     channels: [{ name: "Hermès 공식몰", url: "https://www.hermes.com/kr/ko/category/beauty/fragrances/", affiliate: false }],
   },
   {
@@ -1641,7 +1561,6 @@ export const PERFUMES: Perfume[] = [
     desc: "대지의 풍요로운 향과 시트러스의 신선함이 만나는 에르메스 대표 남성 향이에요. 현대 남성 향수의 역사를 바꾼 명작이에요.",
     review: "\"남자 향수 명작 중의 명작\", \"아버지도 아들도 쓸 수 있는 향\"이라는 후기가 많아요. 선물로도 오랫동안 인기예요.",
     target: { gender: "남성", age: "20대~60대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.7000.jpg",
     channels: [{ name: "Hermès 공식몰", url: "https://www.hermes.com/kr/ko/category/beauty/fragrances/", affiliate: false }],
   },
   {
@@ -1656,7 +1575,6 @@ export const PERFUMES: Perfume[] = [
     desc: "에르메스다운 우아함과 현대적인 감각이 조화를 이루는 화이트 플로럴이에요. 가르데니아의 신선한 아름다움이 돋보여요.",
     review: "\"에르메스 여성 향수 중 가장 접근하기 쉽다\", \"어떤 날에도 어울리는 향\"이라는 후기가 있어요.",
     target: { gender: "여성", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.22181.jpg",
     channels: [{ name: "Hermès 공식몰", url: "https://www.hermes.com/kr/ko/category/beauty/fragrances/", affiliate: false }],
   },
   {
@@ -1671,7 +1589,6 @@ export const PERFUMES: Perfume[] = [
     desc: "기적의 물처럼 신비롭고 따뜻한 앰버그리스 향이에요. 오렌지와 앰버의 조합이 시간이 지날수록 깊어지는 마법 같은 향이에요.",
     review: "\"맡을수록 빠져드는 향\", \"에르메스 중 가장 독특한 향\"이라는 후기가 있어요.",
     target: { gender: "여성", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.4737.jpg",
     channels: [{ name: "Hermès 공식몰", url: "https://www.hermes.com/kr/ko/category/beauty/fragrances/", affiliate: false }],
   },
   // ── 구딸 ──────────────────────────────────────────────────
@@ -1687,7 +1604,6 @@ export const PERFUMES: Perfume[] = [
     desc: "하드리아누스 황제가 사랑한 시칠리아 레몬의 향을 담았어요. 클래식하고 순수한 시트러스의 정수예요.",
     review: "\"레몬향 향수의 기준\", \"뿌리면 이탈리아 여행 가고 싶어진다\"는 후기가 많아요. 시트러스 입문에 추천해요.",
     target: { gender: "남녀 공용", age: "20대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.1339.jpg",
     channels: [{ name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=goutal+hadrien", affiliate: false }],
   },
   {
@@ -1702,7 +1618,6 @@ export const PERFUMES: Perfume[] = [
     desc: "복숭아와 배의 촉촉하고 달콤한 향이 로즈와 어우러진 사랑스러운 향이에요. 어린 소녀 같은 순수한 달콤함이에요.",
     review: "\"향수 처음 쓰는 사람에게 선물하기 완벽\", \"너무 예쁜 향\"이라는 후기가 많아요.",
     target: { gender: "여성", age: "10대 후반~20대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.1341.jpg",
     channels: [{ name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=goutal+petite+cherie", affiliate: false }],
   },
   {
@@ -1717,7 +1632,6 @@ export const PERFUMES: Perfume[] = [
     desc: "프로방스 여름을 가득 담은 라벤더와 허브의 향이에요. 남프랑스 들판의 싱그러움이 가득해요.",
     review: "\"프로방스 여행 갔을 때 생각난다\", \"라벤더향 중 제일 자연스럽다\"는 후기가 있어요.",
     target: { gender: "남녀 공용", age: "20대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.4867.jpg",
     channels: [{ name: "퍼퓸그라피", url: "https://www.perfumegraphy.com/search?keyword=goutal+ete+provence", affiliate: false }],
   },
   // ── 디올 (추가분) ──────────────────────────────────────────
@@ -1733,7 +1647,6 @@ export const PERFUMES: Perfume[] = [
     desc: "디올의 황금 플로럴이에요. 재스민과 로즈의 관능적인 조합이 시대를 초월한 고전적인 아름다움을 보여줘요.",
     review: "\"여자다움이 뭔지 알게 해주는 향\", \"어머니와 딸이 함께 쓸 수 있는 향수\"라는 후기가 많아요.",
     target: { gender: "여성", age: "30대~60대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.15.jpg",
     channels: [{ name: "Dior 공식몰", url: "https://www.dior.com/ko_kr/beauty/fragrances/womens-fragrances/jadore", affiliate: false }],
   },
   {
@@ -1748,7 +1661,6 @@ export const PERFUMES: Perfume[] = [
     desc: "야생처럼 자유롭고 강렬한 남성 향이에요. 베르가못과 앰버우드가 강하고 섹시한 인상을 남겨요. 전 세계 향수 판매 1위를 수성하는 아이콘이에요.",
     review: "\"남자 향수의 교과서\", \"뿌리면 여자들이 좋아한다는 게 사실이었다\"는 후기가 많아요.",
     target: { gender: "남성", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.38488.jpg",
     channels: [{ name: "Dior 공식몰", url: "https://www.dior.com/ko_kr/beauty/fragrances/mens-fragrances/sauvage", affiliate: false }],
   },
   {
@@ -1763,7 +1675,6 @@ export const PERFUMES: Perfume[] = [
     desc: "발랄한 미스 디올 블루밍과 달리 성숙하고 우아한 다마스크 로즈 중심의 향이에요. 패출리의 깊이가 복잡한 매력을 더해요.",
     review: "\"블루밍 졸업 후 이걸로 넘어갔다\", \"나이 들수록 더 잘 맞는 향\"이라는 후기가 있어요.",
     target: { gender: "여성", age: "20대 중반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.14348.jpg",
     channels: [{ name: "Dior 공식몰", url: "https://www.dior.com/ko_kr/beauty/fragrances/womens-fragrances/miss-dior", affiliate: false }],
   },
   {
@@ -1778,7 +1689,6 @@ export const PERFUMES: Perfume[] = [
     desc: "중독적인 아몬드와 코코넛의 달콤함이 관능적으로 조화를 이루는 향이에요. 한번 빠지면 헤어나기 어려운 디올의 마성 향수예요.",
     review: "\"처음엔 달콤하다 싶었는데 중독됐다\", \"겨울 밤에 뿌리면 완벽\"이라는 후기가 있어요.",
     target: { gender: "여성", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.3.jpg",
     channels: [{ name: "Dior 공식몰", url: "https://www.dior.com/ko_kr/beauty/fragrances/womens-fragrances/hypnotic-poison", affiliate: false }],
   },
   // ── 아쿠아 디 파르마 (추가분) ──────────────────────────────
@@ -1794,7 +1704,6 @@ export const PERFUMES: Perfume[] = [
     desc: "콜로니아의 클래식을 더욱 농도 높게 담은 버전이에요. 이탈리아 장인 정신이 담긴 세련된 남성 향수예요.",
     review: "\"이탈리아 신사의 향\", \"어른이 되면 이 향수를 쓰고 싶었다\"는 후기가 있어요.",
     target: { gender: "남성", age: "30대~60대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.11892.jpg",
     channels: [{ name: "Acqua di Parma 공식몰", url: "https://www.acquadiparma.com/ko_kr/", affiliate: false }],
   },
   {
@@ -1809,7 +1718,6 @@ export const PERFUMES: Perfume[] = [
     desc: "이탈리아 마그놀리아의 순수하고 우아한 아름다움을 담은 향이에요. 아쿠아 디 파르마 여성 컬렉션의 대표예요.",
     review: "\"이탈리아 봄이 생각나는 향\", \"고급스러운 플로럴을 원한다면 이거\"라는 후기가 있어요.",
     target: { gender: "여성", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.21831.jpg",
     channels: [{ name: "Acqua di Parma 공식몰", url: "https://www.acquadiparma.com/ko_kr/", affiliate: false }],
   },
   {
@@ -1824,7 +1732,6 @@ export const PERFUMES: Perfume[] = [
     desc: "피렌체를 상징하는 아이리스 꽃의 파우더리하고 우아한 향이에요. 클래식하고 고급스러운 향을 원한다면 이 향수예요.",
     review: "\"아이리스 향 중 제일 고급스럽다\", \"피렌체 여행에서 사온 향수 같다\"는 후기가 있어요.",
     target: { gender: "여성", age: "30대~60대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.1690.jpg",
     channels: [{ name: "Acqua di Parma 공식몰", url: "https://www.acquadiparma.com/ko_kr/", affiliate: false }],
   },
   // ── 킬리안 ──────────────────────────────────────────────
@@ -1840,7 +1747,6 @@ export const PERFUMES: Perfume[] = [
     desc: "12개 화이트 플로럴 원료를 아낌없이 담은 향이에요. 순수하고 강렬한 플로럴의 폭발적인 아름다움이에요.",
     review: "\"화이트 플로럴 향수 중 최강\", \"뿌리면 방에 들어갈 때 알 수 있다\"는 후기가 있어요.",
     target: { gender: "여성", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.20065.jpg",
     channels: [{ name: "Kilian 공식몰", url: "https://www.kilianparis.com/ko", affiliate: false }],
   },
   {
@@ -1855,7 +1761,6 @@ export const PERFUMES: Perfume[] = [
     desc: "마시멜로와 꿀의 달콤함, 오렌지 블로섬의 부드러운 향이 사랑스럽게 어우러진 향이에요. 킬리안에서 가장 달콤한 향이에요.",
     review: "\"달콤한 향 좋아하면 무조건 이거\", \"뿌리면 안아주고 싶어진다는 소리를 들었다\"는 후기가 있어요.",
     target: { gender: "여성", age: "20대~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.20064.jpg",
     channels: [{ name: "Kilian 공식몰", url: "https://www.kilianparis.com/ko", affiliate: false }],
   },
   {
@@ -1870,7 +1775,6 @@ export const PERFUMES: Perfume[] = [
     desc: "코냑 통에서 증발하는 천사의 몫처럼 따뜻하고 달콤한 향이에요. 오크와 바닐라, 코냑의 어른스러운 구르망이에요.",
     review: "\"위스키바 분위기가 그대로\", \"겨울 저녁에 딱인 향수\"라는 후기가 있어요. 술 좋아하는 분 선물로 인기예요.",
     target: { gender: "남녀 공용", age: "20대 후반~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.55960.jpg",
     channels: [{ name: "Kilian 공식몰", url: "https://www.kilianparis.com/ko", affiliate: false }],
   },
   {
@@ -1885,7 +1789,6 @@ export const PERFUMES: Perfume[] = [
     desc: "Amy Winehouse의 노래에서 영감받은 달콤하고 어두운 향이에요. 꿀과 담배의 묘한 조화가 중독적인 매력을 자아내요.",
     review: "\"뿌리는 순간 분위기가 달라진다\", \"가장 킬리안답다\"는 후기가 있어요.",
     target: { gender: "남녀 공용", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.17302.jpg",
     channels: [{ name: "Kilian 공식몰", url: "https://www.kilianparis.com/ko", affiliate: false }],
   },
   // ── 입생로랑 (추가분) ──────────────────────────────────────
@@ -1901,7 +1804,6 @@ export const PERFUMES: Perfume[] = [
     desc: "커피와 화이트 플로럴의 대담한 조합이에요. 달콤하고 세련된 현대 여성의 향이에요. 전 세계 베스트셀러 중 하나예요.",
     review: "\"커피향 향수 1등\", \"한 번 뿌리면 계속 쓰게 된다\"는 후기가 많아요. 20대 입문향으로도 자주 추천돼요.",
     target: { gender: "여성", age: "20대~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.34070.jpg",
     channels: [{ name: "YSL뷰티 공식몰", url: "https://www.yslbeauty.co.kr/fragrance/", affiliate: false }],
   },
   {
@@ -1916,7 +1818,6 @@ export const PERFUMES: Perfume[] = [
     desc: "파리지엔느의 사랑 이야기처럼 달콤하고 로맨틱한 향이에요. 딸기와 로즈의 사랑스러운 조합이에요.",
     review: "\"데이트할 때 무조건 이거\", \"달콤하고 예쁜 향\"이라는 후기가 많아요. 선물로도 자주 구매돼요.",
     target: { gender: "여성", age: "20대~30대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.43298.jpg",
     channels: [{ name: "YSL뷰티 공식몰", url: "https://www.yslbeauty.co.kr/fragrance/", affiliate: false }],
   },
   {
@@ -1931,7 +1832,6 @@ export const PERFUMES: Perfume[] = [
     desc: "1977년 출시된 향수 역사상 가장 유명한 오리엔탈 향 중 하나예요. 강렬한 스파이스와 오리엔탈 베이스가 충격적인 매력을 자아내요.",
     review: "\"향수 클래식 중 클래식\", \"처음엔 강하지만 익숙해지면 못 떼어낸다\"는 후기가 있어요.",
     target: { gender: "여성", age: "30대~60대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.6.jpg",
     channels: [{ name: "YSL뷰티 공식몰", url: "https://www.yslbeauty.co.kr/fragrance/", affiliate: false }],
   },
   // ── 조 러브스 ──────────────────────────────────────────────
@@ -1947,7 +1847,6 @@ export const PERFUMES: Perfume[] = [
     desc: "조 말론의 창업자 Jo Malone이 독립해 만든 향수 브랜드의 시그니처예요. 나무와 풀의 자연스러운 조화가 독특해요.",
     review: "\"조 말론보다 더 독특한 느낌\", \"향수 매니아들이 좋아하는 숨겨진 브랜드\"라는 후기가 있어요.",
     target: { gender: "남녀 공용", age: "20대 후반~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.22403.jpg",
     channels: [{ name: "Jo Loves 공식몰", url: "https://www.joloves.com", affiliate: false }],
   },
   {
@@ -1962,7 +1861,6 @@ export const PERFUMES: Perfume[] = [
     desc: "포멜로의 상큼하고 싱그러운 시트러스가 바질의 허브향과 만나는 신선한 향이에요. 조 러브스의 대표 시트러스 향이에요.",
     review: "\"시트러스향 좋아한다면 무조건 추천\", \"상쾌하고 기분 좋아지는 향\"이라는 후기가 있어요.",
     target: { gender: "남녀 공용", age: "20대~40대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.22405.jpg",
     channels: [{ name: "Jo Loves 공식몰", url: "https://www.joloves.com", affiliate: false }],
   },
   // ── 펜할리곤스 ──────────────────────────────────────────────
@@ -1978,7 +1876,6 @@ export const PERFUMES: Perfume[] = [
     desc: "터키 하알페티 마을에서 피어나는 블랙 로즈를 담은 향이에요. 커피와 로즈의 이국적이고 신비로운 조합이에요.",
     review: "\"블랙 로즈 향수 중 단연 최고\", \"터키 여행 기억이 난다\"는 후기가 있어요. 개성 강한 향을 원한다면 추천해요.",
     target: { gender: "남녀 공용", age: "20대 후반~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.43016.jpg",
     channels: [{ name: "Penhaligon's 공식몰", url: "https://www.penhaligons.com/ko-kr", affiliate: false }],
   },
   {
@@ -1993,7 +1890,6 @@ export const PERFUMES: Perfume[] = [
     desc: "황후처럼 우아하고 고귀한 플로럴이에요. 펜할리곤스의 여성 시그니처로 꾸준히 사랑받는 향이에요.",
     review: "\"진짜 여자다운 향수\", \"선물로 드렸더니 최고의 향수라 했다\"는 후기가 있어요.",
     target: { gender: "여성", age: "30대~50대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.43017.jpg",
     channels: [{ name: "Penhaligon's 공식몰", url: "https://www.penhaligons.com/ko-kr", affiliate: false }],
   },
   {
@@ -2008,7 +1904,6 @@ export const PERFUMES: Perfume[] = [
     desc: "처칠이 즐겨 사용했다는 영국의 클래식 향수예요. 레몬과 페퍼의 상쾌함이 우디 베이스 위에 우아하게 올라요.",
     review: "\"영국 신사의 향수\", \"클래식하면서 질리지 않는다\"는 후기가 있어요. 남성 선물로 인기예요.",
     target: { gender: "남성", age: "30대~60대" },
-    imageUrl: "https://fimgs.net/mdimg/perfume/375x500.1743.jpg",
     channels: [{ name: "Penhaligon's 공식몰", url: "https://www.penhaligons.com/ko-kr", affiliate: false }],
   },
   // ── 산타마리아노벨라 ──────────────────────────────────────
