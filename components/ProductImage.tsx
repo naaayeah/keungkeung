@@ -17,12 +17,17 @@ export default function ProductImage({ imageUrl, family, size = 54, fill = false
     return <Bottle family={family} size={fill ? 72 : size} />;
   }
 
+  // 동일 출처 프록시 경유 — 핫링크 안정화 + 결과 카드 PNG 캡처 시 이미지 정상 렌더
+  const src = imageUrl.includes("fimgs.net")
+    ? `/api/img?u=${encodeURIComponent(imageUrl)}`
+    : imageUrl;
+
   return (
     <img
-      src={imageUrl}
+      src={src}
       alt=""
       loading="lazy"
-      referrerPolicy="no-referrer"
+      crossOrigin="anonymous"
       onError={() => setFailed(true)}
       style={
         fill

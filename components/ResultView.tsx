@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, type ReactNode } from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
+import { toPng } from "html-to-image";
 import ProductCard from "./ProductCard";
 import { getSavedIds, setSavedIds, reportSaveDelta } from "@/lib/save";
 import type { Perfume } from "@/data/perfumes";
@@ -50,7 +51,9 @@ function getMoodColor(data: ResultData): string {
 
 export default function ResultView({ data, previews, onReset }: ResultViewProps) {
   const [saved, setSaved] = useState<Set<string>>(new Set());
-  const [shared, setShared] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [savingImg, setSavingImg] = useState(false);
+  const captureRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setSaved(new Set(getSavedIds()));
@@ -71,7 +74,8 @@ export default function ResultView({ data, previews, onReset }: ResultViewProps)
     });
   };
 
-  const share = async () => {
+  // 1. 결과 텍스트 클립보드 복사
+  const copyText = async () => {
     const lines = [
       `킁킁이 읽은 내 무드: "${data.moodOneLiner}"`,
       `키워드: ${data.moodKeywords.map((k) => `#${k}`).join(" ")}`,
@@ -81,20 +85,33 @@ export default function ResultView({ data, previews, onReset }: ResultViewProps)
       "",
       "킁킁 — 당신의 향을 찾아드립니다",
     ];
-    const text = lines.join("\n");
     try {
-      if (navigator.share) {
-        await navigator.share({ title: "킁킁 — 내 향수 추천 결과", text });
-        return;
-      }
-    } catch {
-      return; // 사용자가 공유를 취소한 경우
-    }
-    try {
-      await navigator.clipboard.writeText(text);
-      setShared(true);
-      setTimeout(() => setShared(false), 2000);
+      await navigator.clipboard.writeText(lines.join("\n"));
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     } catch {}
+  };
+
+  // 2. 결과 카드를 이미지(PNG)로 저장
+  const saveImage = async () => {
+    if (!captureRef.current || savingImg) return;
+    setSavingImg(true);
+    try {
+      const dataUrl = await toPng(captureRef.current, {
+        pixelRatio: 2,
+        backgroundColor: "#FAFAFA",
+        cacheBust: true,
+        filter: (node) => !(node instanceof HTMLElement && node.dataset.noCapture === "true"),
+      });
+      const link = document.createElement("a");
+      link.download = "킁킁-향수추천.png";
+      link.href = dataUrl;
+      link.click();
+    } catch {
+      // 캡처 실패 시 조용히 무시
+    } finally {
+      setSavingImg(false);
+    }
   };
 
   const byTier = {
@@ -105,6 +122,8 @@ export default function ResultView({ data, previews, onReset }: ResultViewProps)
 
   return (
     <section className="flex flex-col gap-7 animate-[fadeUp_0.5s_ease_both]">
+
+     <div ref={captureRef} className="flex flex-col gap-7 bg-[#FAFAFA]">
 
       {/* 업로드 이미지 콜라주 */}
       {previews.length > 0 && (
@@ -200,15 +219,32 @@ export default function ResultView({ data, previews, onReset }: ResultViewProps)
         </div>
       </SectionCard>
 
-      {/* 공유 + 다시 찾기 */}
+      {/* 킁킁 워터마크 — 이미지 저장 시 함께 캡처 */}
+      <p className="text-center text-[11px] tracking-[0.2em] text-[#BBBBBB] font-medium">
+        킁킁 — 당신의 향을 찾아드립니다
+      </p>
+
+     </div>
+
+      {/* 공유 + 다시 찾기 (캡처 영역 밖) */}
       <div className="flex flex-col gap-3">
-        <button
-          onClick={share}
-          className="w-full py-3.5 rounded-2xl bg-[#111111] text-white text-sm font-semibold transition-all hover:bg-[#333333] active:scale-[0.98] flex items-center justify-center gap-2"
-        >
-          <ShareIcon />
-          {shared ? "복사됐어요! 친구에게 붙여넣기 해보세요" : "결과 공유하기"}
-        </button>
+        <div className="flex gap-3">
+          <button
+            onClick={copyText}
+            className="flex-1 py-3.5 rounded-2xl bg-[#111111] text-white text-sm font-semibold transition-all hover:bg-[#333333] active:scale-[0.98] flex items-center justify-center gap-2"
+          >
+            <CopyIcon />
+            {copied ? "복사됐어요!" : "텍스트 복사"}
+          </button>
+          <button
+            onClick={saveImage}
+            disabled={savingImg}
+            className="flex-1 py-3.5 rounded-2xl border border-[#111111] bg-white text-[#111111] text-sm font-semibold transition-all hover:bg-[#F5F5F5] active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50"
+          >
+            <ImageIcon />
+            {savingImg ? "저장 중…" : "이미지 저장"}
+          </button>
+        </div>
         <button
           onClick={onReset}
           className="w-full py-3.5 rounded-2xl border border-[#E5E5E5] bg-white text-[#555555] text-sm transition-all hover:border-[#111111] hover:text-[#111111] active:scale-[0.98]"
@@ -295,13 +331,21 @@ function TagIcon() {
   );
 }
 
-function ShareIcon() {
+function CopyIcon() {
   return (
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="6" cy="12" r="3" />
-      <circle cx="18" cy="6" r="3" />
-      <circle cx="18" cy="18" r="3" />
-      <path d="M8.7 10.7l6.6-3.4M8.7 13.3l6.6 3.4" />
+      <rect x="9" y="9" width="11" height="11" rx="2" />
+      <path d="M5 15V5a2 2 0 0 1 2-2h10" />
+    </svg>
+  );
+}
+
+function ImageIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <circle cx="8.5" cy="8.5" r="1.5" />
+      <path d="M21 15l-5-5L5 21" />
     </svg>
   );
 }
