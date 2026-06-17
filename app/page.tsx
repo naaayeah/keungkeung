@@ -294,6 +294,12 @@ export default function Home() {
                   <span className="text-[#111111]" aria-hidden="true"><CrownIcon /></span>
                   <h2 className="text-[15px] font-bold text-[#111111]">지금 인기 향수</h2>
                   <span className="text-[10px] text-[#999999]">저장 많은 순</span>
+                  <Link
+                    href="/ranking"
+                    className="ml-auto text-[12px] text-[#999999] hover:text-[#111111] transition-colors flex items-center gap-0.5"
+                  >
+                    더보기 ›
+                  </Link>
                 </div>
                 <ol className="flex flex-col gap-1">
                   {popular.map(({ perfume, count }, i) => (
